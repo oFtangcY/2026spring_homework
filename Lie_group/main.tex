@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}
+
+\input{preamble/packages.tex}
+\input{preamble/config.tex}
+\input{preamble/macros.tex}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection*{Problem 1:}
+\paragraph{(1)}
+Using the formula
+\begin{equation*}
+  \pi_m(X) f = -\pdv{f}{z_1} \left(X_{11} z_1 + X_{12} z_2\right) - \pdv{f}{z_2} \left(X_{21} z_1 + X_{22} z_2\right),
+\end{equation*}
+by direct calculation we can write out the three Lie algebra generators in the representation \textbf{4} as
+\begin{align*}
+  \pi_3(J_1) &= \mathrm{i} \mqty(0 & -1 & 0 & 0 \\
+  -3 & 0 & -2 & 0 \\
+  0 & -2 & 0 & -3 \\
+  0 & 0 & -1 & 0), \\
+  \pi_3(J_2) &= \mqty(0 & 1 & 0 & 0 \\
+  -3 & 0 & 2 & 0 \\
+  0 & -2 & 0 & 3 \\
+  0 & 0 & -1 & 0), \\
+  \pi_3(J_3) &= \mathrm{i} \mqty(-3 & 0 & 0 & 0 \\
+  0 & -1 & 0 & 0 \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 3).
+\end{align*}
+
+\paragraph{(2)}
+The dual representation for a Lie algebra is defined by $\pi^{*}(X) = -\pi(X)^T$.
+Since $\pi_3(X)$ and $\pi^{*}_3(X)$ are both irreducible representations of $\mathfrak{su}(2)$ with the same dimension 4, they must be isomorphic (see B.Hall p96, theorem 4.32).
+
+\paragraph{Problem 2:}
+The matrix form of $J_i$ in the representation \textbf{3} is
+\begin{equation*}
+  \pi_2(J_1) = \mathrm{i} \mqty(0 & -1 & 0 \\ -2 & 0 & -2 \\ 0 & -1 & 0), \quad
+  \pi_2(J_2) = \mqty(0 & 1 & 0 \\ -2 & 0 & 2 \\ 0 & -1 & 0), \quad
+  \pi_2(J_3) = \mathrm{i} \mqty(-2 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 2).
+\end{equation*}
+We make a change of basis to a new set defined as
+\begin{equation*}
+  u_1 = \frac{1}{2}(z_1^2 - z_2^2), \quad u_2 = \frac{\mathrm{i}}{2}(z_1^2 + z_2^2), \quad u_3 = z_1 z_2,
+\end{equation*}
+and write out the matrix form of $L_k = \frac{1}{2} \pi_2(J_k)$, we find
+\begin{equation*}
+  L_1 = \mqty(0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0), \quad
+  L_2 = \mqty(0 & 0 & 1 \\ 0 & 0 & 0 \\ -1 & 0 & 0), \quad
+  L_3 = \mqty(0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0),
+\end{equation*}
+which is the standard generators of $\mathfrak{so}(3)$.
+
+\paragraph{Problem 3:}
+The Cartan subalgebra elements are diagonal matrices
+\begin{equation*}
+  H = \mqty(\lambda_1 & 0 & \cdots & 0 \\ 0 & \lambda_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & \lambda_{n + 1}),
+\end{equation*}
+with 
+\begin{equation*}
+  \lambda_1 + \lambda_2 + \cdots + \lambda_{n + 1} = 0.
+\end{equation*}
+Then for matrix $E_{j, k}(j, k = 1, 2, \cdots, n + 1)$, we can compute
+\begin{equation*}
+  \comm{H}{E_{j, k}} = (\lambda_j - \lambda_k) E_{j, k}.
+\end{equation*}
+Hence when $j \neq k$, $E_{j, k}$ is a root vector for the root called $\alpha_{j, k}$, which satisfy
+\begin{equation*}
+  \langle \alpha_{j, k}, H \rangle = \lambda_j - \lambda_k.
+\end{equation*}
+Take the orthonormal basis $e_1, e_2, \cdots, e_{n + 1}$ of the vector space $\mathbb{C}^{n + 1}$ such that $e_i = E_{i, i}$, we can write
+\begin{equation*}
+  p \cdot \tr(\alpha_{j, k}^{\dagger} H) = \lambda_j - \lambda_k \Rightarrow \alpha_{j, k} = \frac{e_j - e_k}{p}
+\end{equation*}
+with coroots
+\begin{equation*}
+  H_{j, k} \equiv H_{\alpha_{j, k}} = \frac{2\alpha_{j, k}}{\langle \alpha_{j, k}, \alpha_{j, k} \rangle} = e_j - e_k.
+\end{equation*}
+The corresponding $X_{\alpha} = E_{j, k}$ and $Y_{\alpha} = E_{k, j}$ together with $H_{\alpha}$ satisfy the commutation relation of $\mathfrak{sl}(2, \mathbb{C})$.
+
+\paragraph{Problem 4:}
+\paragraph{(1)}
+The Cartan subalgebra of $\mathfrak{sl}(2, \mathbb{C}) \oplus \mathfrak{sl}(2, \mathbb{C})$ is $\mathfrak{h} = \text{span} \{H_1, H_2\}$ where
+\begin{equation*}
+  H_1 = \mqty(1 & 0 \\ 0 & -1) \oplus O, \quad H_2 = O \oplus \mqty(1 & 0 \\ 0 & -1).
+\end{equation*}
+Then we can choose $\alpha_1 = H_1, \alpha_2 = H_2$ such that all the roots are $\pm \alpha_1$ and $\pm \alpha_2$, so a standard choice of simple roots is $\Delta = \{\alpha_1, \alpha_2\}$.
+
+\paragraph{(2)}
+The inner product gives
+\begin{equation*}
+  \langle \alpha_i, \alpha_j \rangle = 2\delta_{ij},
+\end{equation*}
+so the roots have length $\sqrt{2}$.
+Hence we can write $\pm \alpha_1, \pm \alpha_2$ as vectors
+\begin{equation*}
+  \vb*{\alpha_1} = (\sqrt{2}, 0),\quad \vb*{\alpha_2} = (0, \sqrt{2}),\quad -\vb*{\alpha_1} = (-\sqrt{2}, 0),\quad -\vb*{\alpha_2} = (0, -\sqrt{2}).
+\end{equation*}
+
+\paragraph{(3)}
+Two basic operations are
+\begin{equation*}
+  s_{\alpha_1} \cdot (x, y) = (-x, y), \quad s_{\alpha_2} \cdot (x, y) = (x, -y),
+\end{equation*}
+and these two operations commute.
+Thus the Weyl group must contain four action:
+\begin{enumerate}
+  \item Identity: $e$;
+  \item Reflection across $y$-axis: $s_{\alpha_1}$;
+  \item Reflection across $x$-axis: $s_{\alpha_2}$;
+  \item Rotation by $180^{\circ}$: $s_{\alpha_1} s_{\alpha_2}$.
+\end{enumerate}
+
+
+\end{document}
