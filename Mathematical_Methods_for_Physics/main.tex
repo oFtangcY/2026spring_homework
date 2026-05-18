@@ -1,0 +1,185 @@
+\documentclass[12pt]{article}
+
+\input{preamble/packages.tex}
+\input{preamble/config.tex}
+\input{preamble/macros.tex}
+
+\begin{document}
+
+\maketitle
+
+\paragraph{1.}
+取 $\lambda = 0$，本征值问题转化为定解问题
+\begin{equation*}
+	\begin{cases}
+		\displaystyle \rho \dv{\rho}\left[\rho \dv{R(\rho)}{\rho}\right] - R(\rho) = 0 \\
+		R(a) = 0 \quad R'(b) = 0.
+	\end{cases}
+\end{equation*}
+令 $x = \ln \rho, R(\rho) = u(x)$，方程化为
+\begin{equation*}
+	\left(\dv[2]{x} - 1\right) u(x) = 0.
+\end{equation*}
+不难发现定解问题的解应当具有形式
+\begin{equation*}
+	R(\rho) = C_1 \rho + C_2 \rho^{-1}.
+\end{equation*}
+然而在该定解问题相应的边界条件下求解系数 $C_1$ 和 $C_2$ 均得 0，故在 $\lambda = 0$ 时不存在非零解。
+故 $\lambda = 0$ 不是该本征值问题的本征值。
+
+\paragraph{2.}
+根据 Neumann 函数的定义，对方程 $\neumann{\nu}(x) \sin \nu \pi = \cos \nu \pi \bessel{\nu}(x) - \bessel{-\nu}(x)$ 左右两边分别关于参数 $\nu$ 求导得到
+\begin{equation*}
+	\sin \nu \pi \pdv{\neumann{\nu}(x)}{\nu} + \pi \cos \nu \pi \neumann{\nu}(x) = -\pi \sin \nu \pi \bessel{\nu}(x) + \cos \nu \pi \pdv{\bessel{\nu}(x)}{\nu} - \pdv{\bessel{-\nu}(x)}{\nu}. \tag{2.1} \label{eq2-1}
+\end{equation*}
+对式 (\ref{eq2-1}) 继续求导得到
+\begin{align*}
+	\sin \nu \pi &\pdv[2]{\neumann{\nu}(x)}{\nu} + \pi \cos \nu \pi \pdv{\neumann{\nu}(x)}{\nu} - \pi^2 \sin \nu \pi \neumann{\nu}(x) + \pi \cos \nu \pi \pdv{\neumann{\nu}(x)}{\nu} \\
+	&= -\pi \sin \nu \pi \pdv{\bessel{\nu}(x)}{\nu} - \pi^2 \cos \nu \pi \bessel{\nu}(x) + \cos \nu \pi \pdv[2]{\bessel{\nu}(x)}{\nu} - \pi \sin \nu \pi \pdv{\bessel{\nu}(x)}{\nu} - \pdv[2]{\bessel{-\nu}(x)}{\nu}.
+\end{align*}
+取 $\nu = 0$，有
+\begin{equation*}
+	2\pi \eval{\pdv{\neumann{\nu}(x)}{\nu}}_{\nu = 0} = -\pi^2 \bessel{0}(x) + \eval{\pdv[2]{\bessel{\nu}(x)}{\nu}}_{\nu = 0} - \eval{\pdv[2]{\bessel{-\nu}{x}}{\nu}}_{\nu = 0}.
+\end{equation*}
+不难发现
+\begin{equation*}
+	\eval{\pdv[2]{\bessel{-\nu}(x)}{\nu}}_{\nu = 0} = \eval{\pdv[2]{\bessel{\nu}(x)}{\nu}}_{\nu = 0},
+\end{equation*}
+即得到
+\begin{equation*}
+	\eval{\pdv{\neumann{\nu}(x)}{\nu}}_{\nu = 0} = -\frac{\pi}{2} \bessel{0}(x). \tag{2.2}
+\end{equation*}
+
+\paragraph{3.(1)}
+将待求积分记为 $f(n) = \int_{0}^{x} x^n \neumann{n}(x) \cos x \dd{x}$，考虑 $f(n + 1)$：
+\begin{align*}
+	f(n + 1) &= \int_{0}^{x} x^{n + 1} \neumann{n + 1}(x) \cos x \dd{x} \\
+	&= \eval{x^{n + 1} \neumann{n + 1}(x) \sin x}_{0}^{x} - \int_{0}^{x} x^{n + 1} \neumann{n}(x) \sin x \dd{x} \\
+	&= x^{n + 1} \neumann{n + 1}(x) \sin x + \eval{x^{n + 1} \neumann{n}(x) \cos x}_{0}^{x} - \int_{0}^{x} \dv{x} \left[x^{2n + 1} x^{-n} \neumann{n}(x)\right] \cos x \dd{x} \\
+	&= x^{n + 1} \neumann{n + 1}(x) \sin x + x^{n + 1} \neumann{n}(x) \cos x - \int_{0}^{x} \left[(2n + 1) x^n \neumann{n}(x) - x^{n + 1} \neumann{n + 1}(x) \right] \cos x \dd{x} \\
+	&= x^{n + 1} \neumann{n + 1}(x) \sin x + x^{n + 1} \neumann{n}(x) \cos x - (2n + 1) f(n) + f(n + 1).
+\end{align*}
+因此我们得到
+\begin{equation*}
+	f(n) = \int_{0}^{x} x^n \neumann{n}(x) \cos x \dd{x} = \frac{x^{n + 1} \neumann{n + 1}(x) \sin x + x^{n + 1} \neumann{n}(x) \cos x}{2n + 1}.
+\end{equation*}
+其中利用了递推关系和 Neumann 函数在 $x \to 0$ 处的渐进展开 
+\begin{equation*}
+	\neumann{n}(x \to 0) \sim - \frac{\Gamma(n)}{\pi} \left(\frac{x}{2}\right)^{-n}.
+\end{equation*}
+
+\paragraph{(2)}
+类似上题，有
+\begin{align*}
+	f(n + 1) &= \int_{0}^{x} x^{n + 1} \bessel{n + 1}(x) \sin x \dd{x} \\
+	&= \eval{- x^{n + 1} \bessel{n + 1}(x) \cos x}_{0}^{x} + \int_{0}^{x} x^{n + 1} \bessel{n}(x) \cos x \dd{x} \\
+	&= - x^{n + 1} \bessel{n + 1}(x) \cos x + \eval{x^{n + 1} \bessel{n}(x) \sin x}_{0}^{x} - \int_{0}^{x} \dv{x} \left[x^{2n + 1} x^{-n} \bessel{n}(x)\right] \sin x \dd{x} \\
+	&= - x^{n + 1} \bessel{n + 1}(x) \cos x + x^{n + 1} \bessel{n}(x) \sin x - \int_{0}^{x} \left[(2n + 1) x^n \bessel{n}(x) - x^{n + 1} \bessel{n + 1}(x)\right] \sin x \dd{x} \\
+	&= - x^{n + 1} \bessel{n + 1}(x) \cos x + x^{n + 1} \bessel{n}(x) \sin x - (2n + 1) f(n) + f(n + 1).
+\end{align*}
+得到
+\begin{equation*}
+	f(n) = \frac{x^{n + 1} \bessel{n}(x) \sin x - x^{n + 1} \bessel{n + 1}(x) \cos x}{2n + 1}.
+\end{equation*}
+其中利用了递推关系和 Bessel 函数在 $x \to 0$ 处收敛。
+
+\paragraph{(3)}
+\begin{align*}
+	\int_{0}^{x} x^3 \bessel{0}(x) \dd{x} &= \eval{x^3 \bessel{1}(x)}_{0}^{x} - \int_{0}^{x} 2x^2 \bessel{1}(x) \dd{x} \\
+	&= x^3 \bessel{1}(x) - \eval{2x^2 \bessel{2}(x)}_{0}^{x} \\
+	&= x^3 \bessel{1}(x) - 2x^2 \bessel{2}(x).
+\end{align*}
+
+\paragraph{(4)}
+利用上题结论，有
+\begin{align*}
+	\int_{0}^{x} x^3 \bessel{0}(x) \ln x \dd{x} &= \eval{[x^3 \bessel{1}(x) - 2x^2 \bessel{2}(x)] \ln x}_{0}^{x} - \int_{0}^{x} [x^2 \bessel{1}(x) - 2x \bessel{2}(x)] \dd{x} \\
+	&= x^3 \bessel{1}(x) \ln x - 2x^2 \bessel{2}(x) \ln x - \eval{x^2 \bessel{2}(x)}_{0}^{x} - \eval{2x \bessel{1}(x)}_{0}^{x} + 4 \int_{0}^{x} \bessel{1}(x) \dd{x} \\
+	&= x^3 \bessel{1}(x) \ln x - 2x^2 \bessel{2}(x) \ln x  - x^2 \bessel{2}(x) - 2x \bessel{1}(x) - 4\eval{\bessel{0}(x)}_{0}^{x} \\
+	&= 4 - 4\bessel{0}(x) + (x^2 \ln x - 2)x \bessel{1}(x) - (2\ln x + 1)x^2 \bessel{2}(x) \\
+	&= 4 + (2x^2 \ln x + x^2 - 4) \bessel{0}(x) + (x^2 \ln x - 4\ln x - 4) x\bessel{1}(x).
+\end{align*}
+
+\paragraph{(5)}
+利用 0 阶 Bessel 函数的级数表示及其一致收敛性：
+\begin{align*}
+	\int_{0}^{t} \bessel{0}(\sqrt{x(t - x)}) \dd{x} &= \sum_{k = 0}^{\infty} \frac{(-1)^k}{2^{2k} (k!)^2} \int_{0}^{t} x^{k} (t - x)^k \dd{x} \\
+	&= \sum_{k = 0}^{\infty} \frac{(-1)^k}{2^{2k} (k!)^2} t^{2k + 1} \text{B}(k + 1, k + 1) \\
+	&= \sum_{k = 0}^{\infty} \frac{(-1)^k}{2^{2k} (2k + 1)!} t^{2k + 1} = 2\sin \frac{t}{2}.
+\end{align*}
+
+\paragraph{4.}
+有 $C_{\nu}(z)$ 与 $C_{\nu - 1}(z)$ 之间的递推关系：
+\begin{gather*}
+	\dv{z}[z^{\nu} C_{\nu}(z)] = z^{\nu} C_{\nu - 1}(z) \tag{4.1} \label{eq4-1} \\
+	\dv{z}[z^{-\nu + 1} C_{\nu - 1}(z)] = -z^{-\nu + 1} C_{\nu}(z) \tag{4.2} \label{eq4-2}
+\end{gather*}
+令等式 (\ref{eq4-1}) 两边同乘 $z^{- 2\nu + 1}$ 并求导数，代入式 (\ref{eq4-2}) 得到
+\begin{equation*}
+	\dv{z} \left[z^{- 2\nu + 1} \dv{z}[z^{\nu} C_{\nu}(z)]\right] + z^{-\nu + 1} C_{\nu}(z) = 0,
+\end{equation*}
+也可以写成标准的 Bessel 方程形式：
+\begin{equation*}
+	\frac{1}{z} \dv{z}\left[z \dv{C_{\nu}(z)}{z}\right] + \left(1 - \frac{\nu^2}{x^2}\right) C_{\nu}(z) = 0.
+\end{equation*} 
+
+\paragraph{5.}
+$n$ 阶 Bessel 函数满足 Bessel 方程
+\begin{equation*}
+	\frac{1}{x} \dv{x}\left[x \dv{\bessel{n}(x)}{x}\right] + \left(1 - \frac{n^2}{x^2}\right) \bessel{n}(x) = 0,
+\end{equation*}
+可以得到
+\begin{equation*}
+	\frac{n^2}{x} \bessel{n}(x) = \dv{x}\left[x \dv{\bessel{n}(x)}{x}\right] + x\bessel{n}(x).
+\end{equation*}
+等式两边乘上 $\bessel{m}(x)$ 并积分得到
+\begin{equation*}
+	n^2 \int \frac{1}{x} \bessel{n}(x) \bessel{m}(x) \dd{x} = \int \bessel{m}(x) \dv{x}\left[x \dv{\bessel{n}(x)}{x}\right] \dd{x} + \int x\bessel{n}(x) \bessel{m}(x) \dd{x}. 
+\end{equation*}
+相应的，有
+\begin{equation*}
+	m^2 \int \frac{1}{x} \bessel{n}(x) \bessel{m}(x) \dd{x} = \int \bessel{n}(x) \dv{x}\left[x \dv{\bessel{m}(x)}{x}\right] \dd{x} + \int x\bessel{n}(x) \bessel{m}(x) \dd{x}. 
+\end{equation*}
+以上两式相减，得到
+\begin{align*}
+	(m^2 - n^2) \int \frac{1}{x} \bessel{n}(x) \bessel{m}(x) \dd{x} =& \int \bessel{n}(x) \dv{x}\left[x \dv{\bessel{m}(x)}{x}\right] \dd{x} - \int \bessel{m}(x) \dv{x}\left[x \dv{\bessel{n}(x)}{x}\right] \dd{x} \\
+	=& x\bessel{n}(x) \bessel{m}'(x) - x\bessel{n}'(x) \bessel{m}(x) \\
+	=& \frac{x}{2} [\bessel{m}(x) \bessel{n + 1}(x) - \bessel{n}(x) \bessel{m + 1}(x)] + \frac{x}{2}[\bessel{n}(x) \bessel{m - 1}(x) - \bessel{m}(x) \bessel{n - 1}(x)] \\
+	=& \frac{x}{2} [\bessel{m}(x) \bessel{n + 1}(x) - \bessel{n}(x) \bessel{m + 1}(x)] + \frac{x}{2}[\bessel{n}(x) \bessel{m - 1}(x) + \bessel{n}(x) \bessel{m + 1}(x) \\
+	&- \bessel{n}(x) \bessel{m + 1}(x) + \bessel{m}(x) \bessel{n + 1}(x) - \bessel{m}(x) \bessel{n + 1}(x) - \bessel{m}(x) \bessel{n - 1}(x)] \\
+	=& x[\bessel{m}(x) \bessel{n + 1}(x) - \bessel{n}(x) \bessel{m + 1}(x)] + (m - n) \bessel{m}(x) \bessel{n}(x),
+\end{align*}
+即证得当 $m \neq n$ 时，
+\begin{equation*}
+	\int \frac{1}{x} \bessel{n}(x) \bessel{m}(x) \dd{x} = \frac{x}{m^2 - n^2} [\bessel{m}(x) \bessel{n + 1}(x) - \bessel{n}(x) \bessel{m + 1}(x)] + \frac{1}{m + n} \bessel{m}(x) \bessel{n}(x). \tag{5.1} \label{eq5-1}
+\end{equation*}
+
+利用递推关系 $\bessel{0}(x) + \bessel{2}(x) = \frac{2}{x} \bessel{1}(x)$，原积分可化为
+\begin{equation*}
+	\int_{0}^{\infty} \frac{\bessel{1}^2 (x)}{x^2} \dd{x} = \frac{1}{2} \int_{0}^{\infty} \frac{1}{x} \bessel{0}(x) \bessel{1}(x) \dd{x} + \frac{1}{2} \int_{0}^{\infty} \frac{1}{x} \bessel{1}(x) \bessel{2}(x) \dd{x}.
+\end{equation*}
+代入上面得到的公式 (\ref{eq5-1}) 并利用 Bessel 函数在 $x \to 0$ 和 $x \to \infty$ 时的渐进性质
+\begin{equation*}
+	\bessel{n}(0) = 0,\quad \bessel{n}(x \to \infty) \sim \sqrt{\frac{2}{\pi x}} \cos(x - \frac{n\pi}{2} - \frac{\pi}{4})
+\end{equation*}
+得到
+\begin{align*}
+	\int_{0}^{\infty} \frac{1}{x} \bessel{0}(x) \bessel{1}(x) \dd{x} =& x[\bessel{1}^2 (x) - \bessel{0}(x) \bessel{2}(x)]_{0}^{\infty} + \eval{\bessel{0}(x) \bessel{1}(x)}_{0}^{\infty} \\
+	=& \frac{2}{\pi} \left[\cos^2 \left(x - \frac{\pi}{2} - \frac{\pi}{4}\right) - \cos(x - \frac{\pi}{4}) \cos(x - \pi - \frac{\pi}{4})\right]_{x \to \infty} \\
+	&+ \eval{\frac{2}{\pi x} \cos(x - \frac{\pi}{4}) \cos(x - \frac{\pi}{2} - \frac{\pi}{4})}_{x \to \infty} \\
+	=& \frac{2}{\pi},
+\end{align*}
+以及
+\begin{align*}
+	\int_{0}^{\infty} \frac{1}{x} \bessel{1}(x) \bessel{2}(x) \dd{x} =& \frac{x}{3} [\bessel{2}^2 (x) - \bessel{1}(x) \bessel{3}(x)]_{0}^{\infty} + \eval{\bessel{1}(x) \bessel{2}(x)}_{0}^{\infty} \\
+	=& \frac{2}{3\pi} \left[\cos^2 \left(x - \pi - \frac{\pi}{4}\right) - \cos(x - \frac{\pi}{2} - \frac{\pi}{4}) \cos(x - \frac{3\pi}{2} - \frac{\pi}{4})\right]_{x \to \infty} \\
+	&+ \eval{\frac{2}{3\pi x} \cos(x - \frac{\pi}{2} - \frac{\pi}{4}) \cos(x - \pi - \frac{\pi}{4})}_{x \to \infty} \\
+	=& \frac{2}{3\pi}.
+\end{align*}
+故计算得到原积分
+\begin{equation*}
+	\int_{0}^{\infty} \frac{\bessel{1}^2 (x)}{x^2} \dd{x} = \frac{4}{3\pi}.
+\end{equation*}
+
+
+\end{document}
