@@ -60,7 +60,7 @@
 \end{equation*}
 代入初始条件得
 \begin{equation*}
-	c_{n, i} = \frac{2}{a^2 \bessel{1}^2 (\mu_i)} \frac{2u_0}{h} \int_{0}^{h} \sin \frac{n\pi z}{h} \dd{z} \int_{0}^{a} f(\rho) \bessel{0}\left(\frac{\mu_i}{a}\rho\right) \rho \dd{\rho} = \frac{4u_0 [1 - (-1)^n]}{n\pi a^2 \bessel{1}^2(\mu_i)} \int_{0}^{a} f(\rho) \bessel{0}\left(\frac{\mu_i}{a}\rho\right) \rho \dd{\rho},
+	c_{n, i} = \frac{2}{a^2 \bessel{0}^2 (\mu_i)} \frac{2u_0}{h} \int_{0}^{h} \sin \frac{n\pi z}{h} \dd{z} \int_{0}^{a} f(\rho) \bessel{0}\left(\frac{\mu_i}{a}\rho\right) \rho \dd{\rho} = \frac{4u_0 [1 - (-1)^n]}{n\pi a^2 \bessel{1}^2(\mu_i)} \int_{0}^{a} f(\rho) \bessel{0}\left(\frac{\mu_i}{a}\rho\right) \rho \dd{\rho},
 \end{equation*}
 其中 $\mu_i$ 为 1 阶 Bessel 函数第 $i$ 个零点.
 
@@ -81,7 +81,7 @@
 \end{equation*}
 故稳态解为
 \begin{equation*}
-	u(\rho, z) = \frac{2u_0}{\pi} \sum_{n = 1}^{\infty} \frac{1 - (-1)^n}{\pi} \frac{\ibessel{0}(n\pi \rho / h)}{\ibessel{0}(n\pi a / h)} \sin \frac{n\pi z}{h}.
+	u(\rho, z) = \frac{2u_0}{\pi} \sum_{n = 1}^{\infty} \frac{1 - (-1)^n}{n} \frac{\ibessel{0}(n\pi \rho / h)}{\ibessel{0}(n\pi a / h)} \sin \frac{n\pi z}{h}.
 \end{equation*}
 
 \paragraph{4.}
@@ -158,7 +158,7 @@
 其中利用了球 Bessel 函数的递推公式 $\dv{z}\left[z^{-\nu} j_{\nu}(z)\right] = -z^{-\nu} j_{\nu + 1}(z)$.
 故由数学归纳法，得到原函数的 Taylor 展开为
 \begin{equation*}
-	\frac{1}{z} \cos \sqrt{z^2 - 2zt} = \sum_{n = 0}^{\infty} \frac{j_{n - 1}(0)}{n!} t^n.
+	\frac{1}{z} \cos \sqrt{z^2 - 2zt} = \sum_{n = 0}^{\infty} \frac{j_{n - 1}(z)}{n!} t^n.
 \end{equation*}
 
 \paragraph{8.}
