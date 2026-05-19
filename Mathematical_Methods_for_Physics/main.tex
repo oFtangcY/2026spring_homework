@@ -9,176 +9,166 @@
 \maketitle
 
 \paragraph{1.}
-取 $\lambda = 0$，本征值问题转化为定解问题
+偏微分方程和边界条件为
+\begin{align*}
+	&\pdv[2]{u}{t} - \frac{c^2}{\rho} \pdv{\rho}(\rho \pdv{u}{\rho}) = A\left(1 - \frac{\rho^2}{R^2}\right) \sin \omega t \\
+	&\eval{u}_{\rho = 0} < \infty, \quad \eval{u}_{\rho = R} = 0 \\
+	&\eval{u}_{t = 0} = 0, \quad \eval{\pdv{u}{t}}_{t = 0}
+\end{align*}
+
+首先寻找特解。
+设特解具有形式 $u_1(\rho, t) = f(\rho) \sin \omega t$, 代入非齐次偏微分方程得到关于 $f(\rho)$ 的微分方程
 \begin{equation*}
-	\begin{cases}
-		\displaystyle \rho \dv{\rho}\left[\rho \dv{R(\rho)}{\rho}\right] - R(\rho) = 0 \\
-		R(a) = 0 \quad R'(b) = 0.
-	\end{cases}
+	-\omega^2 f(\rho) - \frac{c^2}{\rho} \pdv{\rho}(\rho \pdv{f(\rho)}{\rho}) = A\left(1 - \frac{\rho^2}{R^2}\right).
 \end{equation*}
-令 $x = \ln \rho, R(\rho) = u(x)$，方程化为
+由此不难得到一个特解为
 \begin{equation*}
-	\left(\dv[2]{x} - 1\right) u(x) = 0.
+	u_1(\rho, t) = \frac{A}{\omega^2} \left[\frac{\rho^2}{R^2} - 1 + \frac{4c^2}{\omega^2 R^2}\left(\frac{\bessel{0}\left(\frac{\omega}{c} \rho\right)}{\bessel{0}\left(\frac{\omega}{c} R\right)} - 1\right)\right] \sin \omega t.
 \end{equation*}
-不难发现定解问题的解应当具有形式
+上述特解不改变边界条件.
+
+其次求解其次偏微分方程，有相应的初始条件变为
 \begin{equation*}
-	R(\rho) = C_1 \rho + C_2 \rho^{-1}.
+	\eval{u_2}_{t = 0} = 0, \quad \eval{\pdv{u_2}{t}}_{t = 0} = \frac{A}{\omega} \left[\frac{\rho^2}{R^2} - 1 + \frac{4c^2}{\omega^2 R^2}\left(\frac{\bessel{0}\left(\frac{\omega}{c} \rho\right)}{\bessel{0}\left(\frac{\omega}{c} R\right)} - 1\right)\right],
 \end{equation*}
-然而在该定解问题相应的边界条件下求解系数 $C_1$ 和 $C_2$ 均得 0，故在 $\lambda = 0$ 时不存在非零解。
-故 $\lambda = 0$ 不是该本征值问题的本征值。
+得到通解
+\begin{equation*}
+	u_2(\rho, t) = \sum_{i = 1}^{\infty} c_i \sin \frac{\mu_{i}ct}{R} \bessel{0}\left(\frac{\mu_{i}}{R}\rho\right).
+\end{equation*}
+代入初始条件得到
+\begin{align*}
+	c_i = &\frac{R}{\mu_{i}c} \frac{2}{\bessel{1}^2(\mu_{i})} \int_{0}^{1} \frac{A}{\omega} \left[x^2 - 1 + \frac{4c^2}{\omega^2 R^2} \left(\frac{\bessel{0}\left(\frac{\omega R}{c}x\right)}{\bessel{0}\left(\frac{\omega R}{c}\right)} - 1\right)\right] \bessel{0}(\mu_{i}x) x\dd{x} \\
+	&= -\frac{8AR}{\omega c \mu_{i} \bessel{i}(\mu_i)} \left(\frac{1}{\mu_i^3} + \frac{c^2}{\omega^2 R^2}\right) + \frac{8Ac}{\omega^3 R} \frac{1}{\mu_i \bessel{0}(\omega R / c) \bessel{1}^2(\mu_i)} \int_{0}^{1} \bessel{0}\left(\frac{\omega R}{c} x\right) \bessel{0}(\mu_i x) x\dd{x}.
+\end{align*}
+故受迫振动解为
+\begin{equation*}
+	u(\rho, t) = \frac{A}{\omega^2} \left[\frac{\rho^2}{R^2} - 1 + \frac{4c^2}{\omega^2 R^2}\left(\frac{\bessel{0}\left(\frac{\omega}{c} \rho\right)}{\bessel{0}\left(\frac{\omega}{c} R\right)} - 1\right)\right] \sin \omega t + \sum_{i = 1}^{\infty} c_i \sin \frac{\mu_{i}ct}{R} \bessel{0}\left(\frac{\mu_{i}}{R}\rho\right),
+\end{equation*}
+其中 $\mu_i$ 为 0 阶 Bessel 函数的第 $i$ 个零点.
 
 \paragraph{2.}
-根据 Neumann 函数的定义，对方程 $\neumann{\nu}(x) \sin \nu \pi = \cos \nu \pi \bessel{\nu}(x) - \bessel{-\nu}(x)$ 左右两边分别关于参数 $\nu$ 求导得到
-\begin{equation*}
-	\sin \nu \pi \pdv{\neumann{\nu}(x)}{\nu} + \pi \cos \nu \pi \neumann{\nu}(x) = -\pi \sin \nu \pi \bessel{\nu}(x) + \cos \nu \pi \pdv{\bessel{\nu}(x)}{\nu} - \pdv{\bessel{-\nu}(x)}{\nu}. \tag{2.1} \label{eq2-1}
-\end{equation*}
-对式 (\ref{eq2-1}) 继续求导得到
+偏微分方程和边界条件为
 \begin{align*}
-	\sin \nu \pi &\pdv[2]{\neumann{\nu}(x)}{\nu} + \pi \cos \nu \pi \pdv{\neumann{\nu}(x)}{\nu} - \pi^2 \sin \nu \pi \neumann{\nu}(x) + \pi \cos \nu \pi \pdv{\neumann{\nu}(x)}{\nu} \\
-	&= -\pi \sin \nu \pi \pdv{\bessel{\nu}(x)}{\nu} - \pi^2 \cos \nu \pi \bessel{\nu}(x) + \cos \nu \pi \pdv[2]{\bessel{\nu}(x)}{\nu} - \pi \sin \nu \pi \pdv{\bessel{\nu}(x)}{\nu} - \pdv[2]{\bessel{-\nu}(x)}{\nu}.
+	&\pdv{u}{t} - \kappa \left[\frac{1}{\rho} \pdv{\rho}(\rho \pdv{u}{\rho}) + \pdv[2]{u}{z}\right] = 0\\
+	&\eval{u}_{\rho = 0} < \infty, \quad \eval{\pdv{u}{\rho}}_{\rho = a} = 0\\
+	&\eval{u}_{z = 0} = 0, \quad \eval{u}_{z = h} = 0\\
+	&\eval{u}_{t = 0} = u_0 f(\rho)
 \end{align*}
-取 $\nu = 0$，有
+得到其通解为
 \begin{equation*}
-	2\pi \eval{\pdv{\neumann{\nu}(x)}{\nu}}_{\nu = 0} = -\pi^2 \bessel{0}(x) + \eval{\pdv[2]{\bessel{\nu}(x)}{\nu}}_{\nu = 0} - \eval{\pdv[2]{\bessel{-\nu}{x}}{\nu}}_{\nu = 0}.
+	u(\rho, z, t) = \sum_{n, i = 1}^{\infty} c_{n, i} \sin \frac{n\pi z}{h} \bessel{0}\left(\frac{\mu_i}{a}\rho\right) \exp\left\{-\kappa\left[\left(\frac{\mu_i}{a}\right)^2 - \left(\frac{n\pi}{h}\right)^2\right] t\right\}.
 \end{equation*}
-不难发现
+代入初始条件得
 \begin{equation*}
-	\eval{\pdv[2]{\bessel{-\nu}(x)}{\nu}}_{\nu = 0} = \eval{\pdv[2]{\bessel{\nu}(x)}{\nu}}_{\nu = 0},
+	c_{n, i} = \frac{2}{a^2 \bessel{1}^2 (\mu_i)} \frac{2u_0}{h} \int_{0}^{h} \sin \frac{n\pi z}{h} \dd{z} \int_{0}^{a} f(\rho) \bessel{0}\left(\frac{\mu_i}{a}\rho\right) \rho \dd{\rho} = \frac{4u_0 [1 - (-1)^n]}{n\pi a^2 \bessel{1}^2(\mu_i)} \int_{0}^{a} f(\rho) \bessel{0}\left(\frac{\mu_i}{a}\rho\right) \rho \dd{\rho},
 \end{equation*}
-即得到
-\begin{equation*}
-	\eval{\pdv{\neumann{\nu}(x)}{\nu}}_{\nu = 0} = -\frac{\pi}{2} \bessel{0}(x). \tag{2.2}
-\end{equation*}
+其中 $\mu_i$ 为 1 阶 Bessel 函数第 $i$ 个零点.
 
-\paragraph{3.(1)}
-将待求积分记为 $f(n) = \int_{0}^{x} x^n \neumann{n}(x) \cos x \dd{x}$，考虑 $f(n + 1)$：
+\paragraph{3.}
+偏微分方程和边界条件为
 \begin{align*}
-	f(n + 1) &= \int_{0}^{x} x^{n + 1} \neumann{n + 1}(x) \cos x \dd{x} \\
-	&= \eval{x^{n + 1} \neumann{n + 1}(x) \sin x}_{0}^{x} - \int_{0}^{x} x^{n + 1} \neumann{n}(x) \sin x \dd{x} \\
-	&= x^{n + 1} \neumann{n + 1}(x) \sin x + \eval{x^{n + 1} \neumann{n}(x) \cos x}_{0}^{x} - \int_{0}^{x} \dv{x} \left[x^{2n + 1} x^{-n} \neumann{n}(x)\right] \cos x \dd{x} \\
-	&= x^{n + 1} \neumann{n + 1}(x) \sin x + x^{n + 1} \neumann{n}(x) \cos x - \int_{0}^{x} \left[(2n + 1) x^n \neumann{n}(x) - x^{n + 1} \neumann{n + 1}(x) \right] \cos x \dd{x} \\
-	&= x^{n + 1} \neumann{n + 1}(x) \sin x + x^{n + 1} \neumann{n}(x) \cos x - (2n + 1) f(n) + f(n + 1).
+	&\frac{1}{\rho} \pdv{\rho}(\rho \pdv{u}{\rho}) + \pdv[2]{u}{z} = 0\\
+	&\eval{u}_{\rho = 0} < \infty, \quad \eval{u}_{\rho = a} = u_0\\
+	&\eval{u}_{z = 0} = 0, \quad \eval{u}_{z = h} = 0
 \end{align*}
-因此我们得到
+其通解为
 \begin{equation*}
-	f(n) = \int_{0}^{x} x^n \neumann{n}(x) \cos x \dd{x} = \frac{x^{n + 1} \neumann{n + 1}(x) \sin x + x^{n + 1} \neumann{n}(x) \cos x}{2n + 1}.
+	u(\rho, z) = \sum_{n = 1}^{\infty} c_n \ibessel{0} \left(\frac{n\pi \rho}{h}\right) \sin \frac{n\pi z}{h},
 \end{equation*}
-其中利用了递推关系和 Neumann 函数在 $x \to 0$ 处的渐进展开 
+代入边界条件得
 \begin{equation*}
-	\neumann{n}(x \to 0) \sim - \frac{\Gamma(n)}{\pi} \left(\frac{x}{2}\right)^{-n}.
+	c_n = \frac{2u_0}{n\pi} \frac{1 - (-1)^n}{\ibessel{0}(n\pi a / h)},
 \end{equation*}
-
-\paragraph{(2)}
-类似上题，有
-\begin{align*}
-	f(n + 1) &= \int_{0}^{x} x^{n + 1} \bessel{n + 1}(x) \sin x \dd{x} \\
-	&= \eval{- x^{n + 1} \bessel{n + 1}(x) \cos x}_{0}^{x} + \int_{0}^{x} x^{n + 1} \bessel{n}(x) \cos x \dd{x} \\
-	&= - x^{n + 1} \bessel{n + 1}(x) \cos x + \eval{x^{n + 1} \bessel{n}(x) \sin x}_{0}^{x} - \int_{0}^{x} \dv{x} \left[x^{2n + 1} x^{-n} \bessel{n}(x)\right] \sin x \dd{x} \\
-	&= - x^{n + 1} \bessel{n + 1}(x) \cos x + x^{n + 1} \bessel{n}(x) \sin x - \int_{0}^{x} \left[(2n + 1) x^n \bessel{n}(x) - x^{n + 1} \bessel{n + 1}(x)\right] \sin x \dd{x} \\
-	&= - x^{n + 1} \bessel{n + 1}(x) \cos x + x^{n + 1} \bessel{n}(x) \sin x - (2n + 1) f(n) + f(n + 1).
-\end{align*}
-得到
+故稳态解为
 \begin{equation*}
-	f(n) = \frac{x^{n + 1} \bessel{n}(x) \sin x - x^{n + 1} \bessel{n + 1}(x) \cos x}{2n + 1}.
+	u(\rho, z) = \frac{2u_0}{\pi} \sum_{n = 1}^{\infty} \frac{1 - (-1)^n}{\pi} \frac{\ibessel{0}(n\pi \rho / h)}{\ibessel{0}(n\pi a / h)} \sin \frac{n\pi z}{h}.
 \end{equation*}
-其中利用了递推关系和 Bessel 函数在 $x \to 0$ 处收敛。
-
-\paragraph{(3)}
-\begin{align*}
-	\int_{0}^{x} x^3 \bessel{0}(x) \dd{x} &= \eval{x^3 \bessel{1}(x)}_{0}^{x} - \int_{0}^{x} 2x^2 \bessel{1}(x) \dd{x} \\
-	&= x^3 \bessel{1}(x) - \eval{2x^2 \bessel{2}(x)}_{0}^{x} \\
-	&= x^3 \bessel{1}(x) - 2x^2 \bessel{2}(x).
-\end{align*}
-
-\paragraph{(4)}
-利用上题结论，有
-\begin{align*}
-	\int_{0}^{x} x^3 \bessel{0}(x) \ln x \dd{x} &= \eval{[x^3 \bessel{1}(x) - 2x^2 \bessel{2}(x)] \ln x}_{0}^{x} - \int_{0}^{x} [x^2 \bessel{1}(x) - 2x \bessel{2}(x)] \dd{x} \\
-	&= x^3 \bessel{1}(x) \ln x - 2x^2 \bessel{2}(x) \ln x - \eval{x^2 \bessel{2}(x)}_{0}^{x} - \eval{2x \bessel{1}(x)}_{0}^{x} + 4 \int_{0}^{x} \bessel{1}(x) \dd{x} \\
-	&= x^3 \bessel{1}(x) \ln x - 2x^2 \bessel{2}(x) \ln x  - x^2 \bessel{2}(x) - 2x \bessel{1}(x) - 4\eval{\bessel{0}(x)}_{0}^{x} \\
-	&= 4 - 4\bessel{0}(x) + (x^2 \ln x - 2)x \bessel{1}(x) - (2\ln x + 1)x^2 \bessel{2}(x) \\
-	&= 4 + (2x^2 \ln x + x^2 - 4) \bessel{0}(x) + (x^2 \ln x - 4\ln x - 4) x\bessel{1}(x).
-\end{align*}
-
-\paragraph{(5)}
-利用 0 阶 Bessel 函数的级数表示及其一致收敛性：
-\begin{align*}
-	\int_{0}^{t} \bessel{0}(\sqrt{x(t - x)}) \dd{x} &= \sum_{k = 0}^{\infty} \frac{(-1)^k}{2^{2k} (k!)^2} \int_{0}^{t} x^{k} (t - x)^k \dd{x} \\
-	&= \sum_{k = 0}^{\infty} \frac{(-1)^k}{2^{2k} (k!)^2} t^{2k + 1} \text{B}(k + 1, k + 1) \\
-	&= \sum_{k = 0}^{\infty} \frac{(-1)^k}{2^{2k} (2k + 1)!} t^{2k + 1} = 2\sin \frac{t}{2}.
-\end{align*}
 
 \paragraph{4.}
-有 $C_{\nu}(z)$ 与 $C_{\nu - 1}(z)$ 之间的递推关系：
-\begin{gather*}
-	\dv{z}[z^{\nu} C_{\nu}(z)] = z^{\nu} C_{\nu - 1}(z) \tag{4.1} \label{eq4-1} \\
-	\dv{z}[z^{-\nu + 1} C_{\nu - 1}(z)] = -z^{-\nu + 1} C_{\nu}(z) \tag{4.2} \label{eq4-2}
-\end{gather*}
-令等式 (\ref{eq4-1}) 两边同乘 $z^{- 2\nu + 1}$ 并求导数，代入式 (\ref{eq4-2}) 得到
+三角函数形式的 Bessel 函数生成函数为
 \begin{equation*}
-	\dv{z} \left[z^{- 2\nu + 1} \dv{z}[z^{\nu} C_{\nu}(z)]\right] + z^{-\nu + 1} C_{\nu}(z) = 0,
+	\sin(x \sin \theta) = 2 \sum_{n = 0}^{\infty} \bessel{2n + 1}(x) \sin (2n + 1)\theta.
 \end{equation*}
-也可以写成标准的 Bessel 方程形式：
+对上式求导，得到
 \begin{equation*}
-	\frac{1}{z} \dv{z}\left[z \dv{C_{\nu}(z)}{z}\right] + \left(1 - \frac{\nu^2}{x^2}\right) C_{\nu}(z) = 0.
-\end{equation*} 
+	\cos(x \sin \theta) x\cos\theta = 2 \sum_{n = 0}^{\infty} (2n + 1)\bessel{2n + 1}(x) \cos (2n + 1)\theta,
+\end{equation*}
+取 $\theta = 0$，即得
+\begin{equation*}
+	\sum_{n = 0}^{\infty} (2n + 1)\bessel{2n + 1}(x) = \frac{x}{2}.
+\end{equation*}
 
 \paragraph{5.}
-$n$ 阶 Bessel 函数满足 Bessel 方程
-\begin{equation*}
-	\frac{1}{x} \dv{x}\left[x \dv{\bessel{n}(x)}{x}\right] + \left(1 - \frac{n^2}{x^2}\right) \bessel{n}(x) = 0,
-\end{equation*}
-可以得到
-\begin{equation*}
-	\frac{n^2}{x} \bessel{n}(x) = \dv{x}\left[x \dv{\bessel{n}(x)}{x}\right] + x\bessel{n}(x).
-\end{equation*}
-等式两边乘上 $\bessel{m}(x)$ 并积分得到
-\begin{equation*}
-	n^2 \int \frac{1}{x} \bessel{n}(x) \bessel{m}(x) \dd{x} = \int \bessel{m}(x) \dv{x}\left[x \dv{\bessel{n}(x)}{x}\right] \dd{x} + \int x\bessel{n}(x) \bessel{m}(x) \dd{x}. 
-\end{equation*}
-相应的，有
-\begin{equation*}
-	m^2 \int \frac{1}{x} \bessel{n}(x) \bessel{m}(x) \dd{x} = \int \bessel{n}(x) \dv{x}\left[x \dv{\bessel{m}(x)}{x}\right] \dd{x} + \int x\bessel{n}(x) \bessel{m}(x) \dd{x}. 
-\end{equation*}
-以上两式相减，得到
+偏微分方程和边界条件为
 \begin{align*}
-	(m^2 - n^2) \int \frac{1}{x} \bessel{n}(x) \bessel{m}(x) \dd{x} =& \int \bessel{n}(x) \dv{x}\left[x \dv{\bessel{m}(x)}{x}\right] \dd{x} - \int \bessel{m}(x) \dv{x}\left[x \dv{\bessel{n}(x)}{x}\right] \dd{x} \\
-	=& x\bessel{n}(x) \bessel{m}'(x) - x\bessel{n}'(x) \bessel{m}(x) \\
-	=& \frac{x}{2} [\bessel{m}(x) \bessel{n + 1}(x) - \bessel{n}(x) \bessel{m + 1}(x)] + \frac{x}{2}[\bessel{n}(x) \bessel{m - 1}(x) - \bessel{m}(x) \bessel{n - 1}(x)] \\
-	=& \frac{x}{2} [\bessel{m}(x) \bessel{n + 1}(x) - \bessel{n}(x) \bessel{m + 1}(x)] + \frac{x}{2}[\bessel{n}(x) \bessel{m - 1}(x) + \bessel{n}(x) \bessel{m + 1}(x) \\
-	&- \bessel{n}(x) \bessel{m + 1}(x) + \bessel{m}(x) \bessel{n + 1}(x) - \bessel{m}(x) \bessel{n + 1}(x) - \bessel{m}(x) \bessel{n - 1}(x)] \\
-	=& x[\bessel{m}(x) \bessel{n + 1}(x) - \bessel{n}(x) \bessel{m + 1}(x)] + (m - n) \bessel{m}(x) \bessel{n}(x),
+	&\pdv{u}{t} - \kappa \left[\frac{1}{r^2} \pdv{r}(r^2 \pdv{u}{r}) + \frac{1}{r^2 \sin \theta} \pdv{u}(\sin \theta \pdv{u}{\theta})\right] = r\cos \theta \\
+	&\eval{u}_{r = 0} < \infty, \quad \eval{u}_{r = a} = 0 \\
+	&\eval{u}_{\theta = 0} < \infty, \quad \eval{u}_{\theta = \pi / 2} = 0 \\
+	&\eval{u}_{t = 0} = 0
 \end{align*}
-即证得当 $m \neq n$ 时，
+满足边界条件的本征函数组合应为
 \begin{equation*}
-	\int \frac{1}{x} \bessel{n}(x) \bessel{m}(x) \dd{x} = \frac{x}{m^2 - n^2} [\bessel{m}(x) \bessel{n + 1}(x) - \bessel{n}(x) \bessel{m + 1}(x)] + \frac{1}{m + n} \bessel{m}(x) \bessel{n}(x). \tag{5.1} \label{eq5-1}
+	u(r, \theta, t) = \sum_{\substack{n = 0 \\ m = 1}}^{\infty} T_{mn}(t) j_{2n}\left(\frac{\mu_{m, n}}{a}r\right) P_{2n}(\cos \theta).
+\end{equation*}
+将源项按本征函数展开，得到系数
+\begin{equation*}
+	A_{mn} = \frac{2(4n + 1)a}{j_{2n + 1}^2(\mu_{m, n})} \int_{0}^{1} x^3 j_{2n}(\mu_{m, n} x) \dd{x} \int_{0}^{1} y P_{2n}(y) \dd{y}. 
+\end{equation*}
+代入初始条件得
+\begin{equation*}
+	u(r, \theta, t) = \frac{a^2}{\kappa} \sum_{\substack{n = 0 \\ m = 1}}^{\infty} \frac{A_{mn}}{\mu_{m, n}^2} \left(1 - \mathrm{e}^{-\kappa \mu_{m, n}^2 t / a^2}\right) j_{2n}\left(\frac{\mu_{m, n}}{a}r\right) P_{2n}(\cos \theta),
+\end{equation*}
+其中 $\mu_{m, n}$ 为 $2n$ 阶球 Bessel 函数的第 $m$ 个零点.
+
+\paragraph{6.}
+扩散方程的形式为
+\begin{equation*}
+	\laplacian{u} + k^2 u = 0
+\end{equation*}
+在球坐标内为 0 阶球 Bessel 方程，其有限解为
+\begin{equation*}
+	u(r) = A \frac{\sin kr}{r},
+\end{equation*}
+故临界半径为最小 0 点 $R_c = \pi / k$.
+
+在柱坐标内扩散方程为 0 阶 Bessel 方程，其有限解为
+\begin{equation*}
+	u(r) = A_0 \bessel{0}(kr),
+\end{equation*}
+故临界半径为 $R_c = \mu_1 / k \approx 2.404 / k$.
+
+\paragraph{7.}
+计算函数的前几项导数：
+\begin{equation*}
+	\eval{f}_{t = 0} = \frac{\cos z}{z}, \quad \eval{\pdv{f}{t}}_{t = 0} = \frac{\sin z}{z}, \quad \quad \eval{\pdv[2]{f}{t}}_{t = 0} = \frac{\sin z - z\cos z}{z^2},
+\end{equation*}
+不难发现即为前几阶球 Bessel 函数.
+记 $u = \sqrt{z^2 - 2zt}$，有
+\begin{equation*}
+	\dv{t} = -\frac{z}{u} \dv{u},
+\end{equation*}
+假设
+\begin{equation*}
+	f^{(k)}(t) = z^{k - 1} u^{-(k - 1)} j_{k - 1}(u),
+\end{equation*}
+有
+\begin{equation*}
+	f^{(k + 1)}(t) = -\frac{z}{u} \dv{u} \left[z^{k - 1} u^{-(k - 1)} j_{k - 1}(u)\right] = z^k u^{-k} j_k(u),
+\end{equation*}
+其中利用了球 Bessel 函数的递推公式 $\dv{z}\left[z^{-\nu} j_{\nu}(z)\right] = -z^{-\nu} j_{\nu + 1}(z)$.
+故由数学归纳法，得到原函数的 Taylor 展开为
+\begin{equation*}
+	\frac{1}{z} \cos \sqrt{z^2 - 2zt} = \sum_{n = 0}^{\infty} \frac{j_{n - 1}(0)}{n!} t^n.
 \end{equation*}
 
-利用递推关系 $\bessel{0}(x) + \bessel{2}(x) = \frac{2}{x} \bessel{1}(x)$，原积分可化为
+\paragraph{8.}
+将球坐标系中的函数 $\mathrm{e}^{r\cos \theta} \bessel{0}(r \sin \theta)$ 变换到柱坐标系 $(\rho, \phi, z)$，立即可以发现 $\mathrm{e}^{r\cos \theta} \bessel{0}(r \sin \theta) = \mathrm{e}^z \bessel{0}(\rho)$ 是 Laplace 方程的解且具有 $\phi$ 方向对称性，故在球坐标中可以将其展开为
 \begin{equation*}
-	\int_{0}^{\infty} \frac{\bessel{1}^2 (x)}{x^2} \dd{x} = \frac{1}{2} \int_{0}^{\infty} \frac{1}{x} \bessel{0}(x) \bessel{1}(x) \dd{x} + \frac{1}{2} \int_{0}^{\infty} \frac{1}{x} \bessel{1}(x) \bessel{2}(x) \dd{x}.
+	\mathrm{e}^{r\cos \theta} \bessel{0}(r \sin \theta) = \sum_{l = 0}^{\infty} A_l r^l P_l(\cos \theta).
 \end{equation*}
-代入上面得到的公式 (\ref{eq5-1}) 并利用 Bessel 函数在 $x \to 0$ 和 $x \to \infty$ 时的渐进性质
+令 $\theta = 0$，函数化为 $\mathrm{e}^l$，由指数函数的 Taylor 展开以及 唯一性可以直接定出 $A_l = 1 / l!$，即
 \begin{equation*}
-	\bessel{n}(0) = 0,\quad \bessel{n}(x \to \infty) \sim \sqrt{\frac{2}{\pi x}} \cos(x - \frac{n\pi}{2} - \frac{\pi}{4})
-\end{equation*}
-得到
-\begin{align*}
-	\int_{0}^{\infty} \frac{1}{x} \bessel{0}(x) \bessel{1}(x) \dd{x} =& x[\bessel{1}^2 (x) - \bessel{0}(x) \bessel{2}(x)]_{0}^{\infty} + \eval{\bessel{0}(x) \bessel{1}(x)}_{0}^{\infty} \\
-	=& \frac{2}{\pi} \left[\cos^2 \left(x - \frac{\pi}{2} - \frac{\pi}{4}\right) - \cos(x - \frac{\pi}{4}) \cos(x - \pi - \frac{\pi}{4})\right]_{x \to \infty} \\
-	&+ \eval{\frac{2}{\pi x} \cos(x - \frac{\pi}{4}) \cos(x - \frac{\pi}{2} - \frac{\pi}{4})}_{x \to \infty} \\
-	=& \frac{2}{\pi},
-\end{align*}
-以及
-\begin{align*}
-	\int_{0}^{\infty} \frac{1}{x} \bessel{1}(x) \bessel{2}(x) \dd{x} =& \frac{x}{3} [\bessel{2}^2 (x) - \bessel{1}(x) \bessel{3}(x)]_{0}^{\infty} + \eval{\bessel{1}(x) \bessel{2}(x)}_{0}^{\infty} \\
-	=& \frac{2}{3\pi} \left[\cos^2 \left(x - \pi - \frac{\pi}{4}\right) - \cos(x - \frac{\pi}{2} - \frac{\pi}{4}) \cos(x - \frac{3\pi}{2} - \frac{\pi}{4})\right]_{x \to \infty} \\
-	&+ \eval{\frac{2}{3\pi x} \cos(x - \frac{\pi}{2} - \frac{\pi}{4}) \cos(x - \pi - \frac{\pi}{4})}_{x \to \infty} \\
-	=& \frac{2}{3\pi}.
-\end{align*}
-故计算得到原积分
-\begin{equation*}
-	\int_{0}^{\infty} \frac{\bessel{1}^2 (x)}{x^2} \dd{x} = \frac{4}{3\pi}.
+	\mathrm{e}^{r\cos \theta} \bessel{0}(r \sin \theta) = \sum_{l = 0}^{\infty} \frac{r^l}{l!} P_l(\cos \theta).
 \end{equation*}
 
 
