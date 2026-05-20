@@ -10,108 +10,123 @@
 
 \subsubsection*{Problem 1:}
 \paragraph{(1)}
-Using the formula
-\begin{equation*}
-  \pi_m(X) f = -\pdv{f}{z_1} \left(X_{11} z_1 + X_{12} z_2\right) - \pdv{f}{z_2} \left(X_{21} z_1 + X_{22} z_2\right),
-\end{equation*}
-by direct calculation we can write out the three Lie algebra generators in the representation \textbf{4} as
-\begin{align*}
-  \pi_3(J_1) &= \mathrm{i} \mqty(0 & -1 & 0 & 0 \\
-  -3 & 0 & -2 & 0 \\
-  0 & -2 & 0 & -3 \\
-  0 & 0 & -1 & 0), \\
-  \pi_3(J_2) &= \mqty(0 & 1 & 0 & 0 \\
-  -3 & 0 & 2 & 0 \\
-  0 & -2 & 0 & 3 \\
-  0 & 0 & -1 & 0), \\
-  \pi_3(J_3) &= \mathrm{i} \mqty(-3 & 0 & 0 & 0 \\
-  0 & -1 & 0 & 0 \\
-  0 & 0 & 1 & 0 \\
-  0 & 0 & 0 & 3).
-\end{align*}
+There are three types of roots:
+\begin{itemize}
+  \item $e_i - e_j = \sum_{k = i}^{j - 1} \alpha_k$, $1 \leq i < j \leq n$;
+  \item $2e_i = 2\sum_{k = i}^{n - 1} \alpha_k + \alpha_n$;
+  \item $e_i + e_j = \sum_{k = i}^{j - 1} \alpha_k + 2\sum_{k = j}^{n - 1} \alpha_k + \alpha_n$, $1 \leq i < j \leq n$;
+\end{itemize}
+Together with their negatives form the root system of $C_n$.
 
 \paragraph{(2)}
-The dual representation for a Lie algebra is defined by $\pi^{*}(X) = -\pi(X)^T$.
-Since $\pi_3(X)$ and $\pi^{*}_3(X)$ are both irreducible representations of $\mathfrak{su}(2)$ with the same dimension 4, they must be isomorphic (see B.Hall p96, theorem 4.32).
-
-\paragraph{Problem 2:}
-The matrix form of $J_i$ in the representation \textbf{3} is
-\begin{equation*}
-  \pi_2(J_1) = \mathrm{i} \mqty(0 & -1 & 0 \\ -2 & 0 & -2 \\ 0 & -1 & 0), \quad
-  \pi_2(J_2) = \mqty(0 & 1 & 0 \\ -2 & 0 & 2 \\ 0 & -1 & 0), \quad
-  \pi_2(J_3) = \mathrm{i} \mqty(-2 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 2).
-\end{equation*}
-We make a change of basis to a new set defined as
-\begin{equation*}
-  u_1 = \frac{1}{2}(z_1^2 - z_2^2), \quad u_2 = \frac{\mathrm{i}}{2}(z_1^2 + z_2^2), \quad u_3 = z_1 z_2,
-\end{equation*}
-and write out the matrix form of $L_k = \frac{1}{2} \pi_2(J_k)$, we find
-\begin{equation*}
-  L_1 = \mqty(0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0), \quad
-  L_2 = \mqty(0 & 0 & 1 \\ 0 & 0 & 0 \\ -1 & 0 & 0), \quad
-  L_3 = \mqty(0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0),
-\end{equation*}
-which is the standard generators of $\mathfrak{so}(3)$.
-
-\paragraph{Problem 3:}
-The Cartan subalgebra elements are diagonal matrices
-\begin{equation*}
-  H = \mqty(\lambda_1 & 0 & \cdots & 0 \\ 0 & \lambda_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & \lambda_{n + 1}),
-\end{equation*}
-with 
-\begin{equation*}
-  \lambda_1 + \lambda_2 + \cdots + \lambda_{n + 1} = 0.
-\end{equation*}
-Then for matrix $E_{j, k}(j, k = 1, 2, \cdots, n + 1)$, we can compute
-\begin{equation*}
-  \comm{H}{E_{j, k}} = (\lambda_j - \lambda_k) E_{j, k}.
-\end{equation*}
-Hence when $j \neq k$, $E_{j, k}$ is a root vector for the root called $\alpha_{j, k}$, which satisfy
-\begin{equation*}
-  \langle \alpha_{j, k}, H \rangle = \lambda_j - \lambda_k.
-\end{equation*}
-Take the orthonormal basis $e_1, e_2, \cdots, e_{n + 1}$ of the vector space $\mathbb{C}^{n + 1}$ such that $e_i = E_{i, i}$, we can write
-\begin{equation*}
-  p \cdot \tr(\alpha_{j, k}^{\dagger} H) = \lambda_j - \lambda_k \Rightarrow \alpha_{j, k} = \frac{e_j - e_k}{p}
-\end{equation*}
-with coroots
-\begin{equation*}
-  H_{j, k} \equiv H_{\alpha_{j, k}} = \frac{2\alpha_{j, k}}{\langle \alpha_{j, k}, \alpha_{j, k} \rangle} = e_j - e_k.
-\end{equation*}
-The corresponding $X_{\alpha} = E_{j, k}$ and $Y_{\alpha} = E_{k, j}$ together with $H_{\alpha}$ satisfy the commutation relation of $\mathfrak{sl}(2, \mathbb{C})$.
-
-\paragraph{Problem 4:}
-\paragraph{(1)}
-The Cartan subalgebra of $\mathfrak{sl}(2, \mathbb{C}) \oplus \mathfrak{sl}(2, \mathbb{C})$ is $\mathfrak{h} = \text{span} \{H_1, H_2\}$ where
-\begin{equation*}
-  H_1 = \mqty(1 & 0 \\ 0 & -1) \oplus O, \quad H_2 = O \oplus \mqty(1 & 0 \\ 0 & -1).
-\end{equation*}
-Then we can choose $\alpha_1 = H_1, \alpha_2 = H_2$ such that all the roots are $\pm \alpha_1$ and $\pm \alpha_2$, so a standard choice of simple roots is $\Delta = \{\alpha_1, \alpha_2\}$.
-
-\paragraph{(2)}
-The inner product gives
-\begin{equation*}
-  \langle \alpha_i, \alpha_j \rangle = 2\delta_{ij},
-\end{equation*}
-so the roots have length $\sqrt{2}$.
-Hence we can write $\pm \alpha_1, \pm \alpha_2$ as vectors
-\begin{equation*}
-  \vb*{\alpha_1} = (\sqrt{2}, 0),\quad \vb*{\alpha_2} = (0, \sqrt{2}),\quad -\vb*{\alpha_1} = (-\sqrt{2}, 0),\quad -\vb*{\alpha_2} = (0, -\sqrt{2}).
-\end{equation*}
+Three types of Weyl group elements are corresponding to the three types of roots ($x$ is an arbitrary vector $x = x_i e_i$):
+\begin{itemize}
+  \item $s_{e_i - e_j} x = (x_1, \cdots, x_{i - 1}, x_j, x_{i + 1}, \ldots, x_{j - 1}, x_{i}, x_{j + 1}, \ldots, x_n)$, making the reflection on $\mathbb{R}^n$ by swapping the $i$-th and $j$-th coordinates;
+  \item $s_{2e_i} x = (x_1, \cdots, x_{i - 1}, -x_i, x_{i + 1}, \ldots, x_n)$, making the reflection on $\mathbb{R}^n$ by changing the sign of the $i$-th coordinate;
+  \item $s_{e_i + e_j} x = (x_1, \cdots, x_{i - 1}, -x_j, x_{i + 1}, \ldots, x_{j - 1}, -x_{i}, x_{j + 1}, \ldots, x_n)$, making the reflection on $\mathbb{R}^n$ by swapping the $i$-th and $j$-th coordinates and changing the signs of both coordinates;
+\end{itemize}
+We can choose the first two reflections to generate the whole Weyl group.
 
 \paragraph{(3)}
-Two basic operations are
+Choose the simple roots of $B_n$:
 \begin{equation*}
-  s_{\alpha_1} \cdot (x, y) = (-x, y), \quad s_{\alpha_2} \cdot (x, y) = (x, -y),
+  \beta_1 = e_1 - e_2, \beta_2 = e_2 - e_3, \ldots, \beta_{n - 1} = e_{n - 1} - e_n, \beta_n = e_n,
 \end{equation*}
-and these two operations commute.
-Thus the Weyl group must contain four action:
-\begin{enumerate}
-  \item Identity: $e$;
-  \item Reflection across $y$-axis: $s_{\alpha_1}$;
-  \item Reflection across $x$-axis: $s_{\alpha_2}$;
-  \item Rotation by $180^{\circ}$: $s_{\alpha_1} s_{\alpha_2}$.
+while the coroots are
+\begin{equation*}
+  H_{\beta_1} = e_1 - e_2 = \alpha_1, H_{\beta_2} = e_2 - e_3 = \alpha_2, \ldots, H_{\beta_n} = 2e_n = 2\alpha_n.
+\end{equation*}
+WE find the corresponding Weyl group are the same as $C_n$, where $s_{e_i} = s_{2e_i}$, so the only thing left to check is
+\begin{equation*}
+  \phi(s_{\alpha} \cdot e_i) = s_{\phi \alpha} \cdot (\phi e_i).
+\end{equation*}
+Define the linear transformation $\phi: \beta_i \rightarrow \alpha_i$, then under the Weyl group action $s_{\alpha} \cdot e_i = \pm e_i$ or $0$.
+Thus
+\begin{equation*}
+  \phi(s_{\alpha} \cdot e_i) = \left\{
+    \begin{aligned}
+      \phi e_i &= 2e_i \\
+      \phi (-e_i) &= -2e_i \\
+      \phi 0 &= 0
+    \end{aligned}
+  \right\} = s_{\phi \alpha} \cdot (\phi e_i).
+\end{equation*}
+
+\paragraph{(4)}
+Symmetrically, the extra white node must be $\alpha_0 = -2e_1$ and it is easy to verify the connectivity of the extended Dynkin diagram.
+Thus apparently it is a non-simple root of $C_n$.
+
+\subsubsection*{Problem 2:}
+The Chevalley basis of $\mathfrak{sl}(3, \mathbb{C})$ is
+\begin{gather*}
+  H_{\alpha_1} = \alpha_1 = E_{11} - E_{22}, H_{\alpha_2} = \alpha_2 = E_{22} - E_{33}, \\
+  E_{\alpha_1} = E_{12}, E_{\alpha_2} = E_{23}, E_{\alpha_1 + \alpha_2} = E_{13}, \\
+  E_{-\alpha_1} = E_{21}, E_{-\alpha_2} = E_{32}, E_{-(\alpha_1 + \alpha_2)} = E_{31}.
+\end{gather*}
+It is easy to verify the Lie brackets of the Chevalley basis.
+
+\subsubsection*{Problem 3:}
+\paragraph{(1)}
+First consider simple Lie algebra $\mathfrak{g}$ with $\rank{\mathfrak{g}} = 3$:
+\begin{itemize}
+  \item $A_3$: \dynkin{A}{3};
+  \item $B_3$: \dynkin{B}{3};
+  \item $C_3$: \dynkin{C}{3};
+  \item $D_3$: \dynkin{D}{3} $\cong A_3$;
+\end{itemize}
+So non-isomorphic rank-3 simple Lie algebras are $A_3$, $B_3$ and $C_3$.
+Similarly we find non-isomorphic rank-2 simple Lie algebras $A_2$, $B_2$ and $G_2$, and non-isomorphic rank-1 simple Lie algebra $A_1$.
+Then we can construct semi-simple Lie algebra uding direct sum:
+\begin{itemize}
+  \item $A_2 \oplus A_1$;
+  \item $B_2 \oplus A_1$;
+  \item $G_2 \oplus A_1$;
+  \item $A_1 \oplus A_1 \oplus A_1$.
+\end{itemize}
+
+\paragraph{(2)}
+The dimension of the semi-simple Lie algebra is the sum of the numbers of roots and the rank, so we have
+\begin{itemize}
+  \item $\dim(A_3) = 15$
+  \item $\dim(B_3) = 21$
+  \item $\dim(C_3) = 21$
+  \item $\dim(A_2 \oplus A_1) = 11$;
+  \item $\dim(B_2 \oplus A_1) = 13$;
+  \item $\dim(G_2 \oplus A_1) = 17$;
+  \item $\dim(A_1 \oplus A_1 \oplus A_1) = 9$.
+\end{itemize}
+
+\subsubsection*{Problem 4:}
+\begin{enumerate}[label=(\arabic*)]
+  \item no. $\mathfrak{su}(10) \cong A_9$ and $\rank(A_9) > \rank(E_8)$;
+  \item yes. $\mathfrak{so}(10) \cong D_5$: \dynkin{D}{5} $\Rightarrow D_5 \oplus \mathfrak{u}(1) \subset E_6$: \dynkin{E}{6};
+  \item no. $\mathfrak{so}(12) \cong D_6$: \dynkin{D}{6}, $\hat{E}_6$: \dynkin[extended]{E}{6};
+  \item no. $\dim(F_4) = 52 > \dim(A_6) = 48$;
+  \item yes. $\mathfrak{so}(16) \cong D_8$: \dynkin{D}{8}, $\hat{E}_8$: \dynkin[extended]{E}{8}, just delete the first left node;
+  \item yes. $\mathfrak{su}(4) \cong A_3$, $\mathfrak{su}(2) \cong A_1$, $\mathfrak{so}(10) \cong D_5$, $\hat{D}_5$: \dynkin[extended]{D}{5}, just delete one of the middle nodes to get $A_3 \oplus A_1 \oplus A_1$;
+  \item no. $\mathfrak{su}(4) \cong A_3$, $\mathfrak{su}(3) \cong A_2$, $\mathfrak{so}(10) \cong D_5$, $\hat{D}_5$: \dynkin[extended]{D}{5}, we can't obtain $A_3 \oplus A_2$ by deleting one node in $\hat{D}_5$;
+  \item yes. $C_3$: \dynkin{C}{3} is apparently a subdiagram of $F_4$: \dynkin{F}{4}.
+  \item yes. Just delete one node in both $A_3$ and $A_4$ and we can get $A_3$ and $A_2$, together with $\mathfrak{u}(1)^{\oplus 2}$ form a subalgebra of $A_3 \oplus A_4$.
 \end{enumerate}
 
+\subsubsection*{Problem 5:}
+\paragraph{(1)}
+The generators of $\mathfrak{so}(4)$ are $\{J^{(4)}_{ij} = E_{ij} - E_{ji} \mid 1 \leq i < j \leq 4\}$, while the generators of $\mathfrak{so}(5)$ are $\{J^{(5)}_{ij} = E_{ij} - E_{ji} \mid 1 \leq i < j \leq 5\}$.
+Thus we can form $\tilde{J}^{(5)}_{ij} = \mqty{J^{(4)}_{ij} & 0 \\ 0 & 0}$, which are the generators of $\mathfrak{so}(5)$ and also forms a closed vector space.
+So $\mathfrak{so}(4)$ is a subalgebra of $\mathfrak{so}(5)$.
+
+\paragraph{(2)}
+Consider the Cartan subalgebra of $\mathfrak{so}(4)$ as the $2\times 2$ block-diagonal matrices.
+If we identify $\mathfrak{h}$ with $\mathbb{C}^2$ by means of the map
+\begin{equation*}
+  H \mapsto \mathrm{i} (a_1, a_2),
+\end{equation*}
+then the roots are $\pm e_1 \pm e_2$, so we can write the root system as $\{\pm \alpha_1, \pm \alpha_2\}$.
+This can also be derived from $\mathfrak{so}(4) \cong D_2 \cong A_1 \oplus A_1$.
+
+For $\mathfrak{so}(5) \cong B_2$, the root system is $\{\pm e_1, \pm e_2, \pm e_1 \pm e_2\}$.
+
+\paragraph{(3)}
+$\pm e_1 \pm e_2$ are the long roots of $B_2$, and the correspondance ensures the closure of the root system.
 
 \end{document}
