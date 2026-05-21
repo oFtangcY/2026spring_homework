@@ -1,12 +1,12 @@
 # Fdb version 4
-["xdvipdfmx"] 1779389548.61431 "main.xdv" "main.pdf" "main" 1779389548.83111 0
-  "main.xdv" 1779389548.5821 16584 558d35d7262ee7dffc63afadd821c42d "xelatex"
+["xdvipdfmx"] 1779389752.4422 "main.xdv" "main.pdf" "main" 1779389752.65208 0
+  "main.xdv" 1779389752.40957 16584 3880ca234b96b1ac5c4859c9269f30de "xelatex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["xelatex"] 1779389548.11814 "/Users/lollipop/Documents/work/2026spring_homework/Mathematical_Methods_for_Physics/main.tex" "main.xdv" "main" 1779389548.83033 0
+["xelatex"] 1779389751.90293 "/Users/lollipop/Documents/work/2026spring_homework/Mathematical_Methods_for_Physics/main.tex" "main.xdv" "main" 1779389752.65134 0
   "/System/Library/Fonts/Menlo.ttc" 1773984357 2156036 ec05dfca6821d85440da0899493002c3 ""
-  "/Users/lollipop/Documents/work/2026spring_homework/Mathematical_Methods_for_Physics/main.tex" 1779389548.04717 3876 e66a3381cff89503980dc4d6f8c767c2 ""
+  "/Users/lollipop/Documents/work/2026spring_homework/Mathematical_Methods_for_Physics/main.tex" 1779389751.8217 3876 c4d514d73478da3479fb2853ecb1b0bd ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/tcrm0600.tfm" 1136768653 1536 12e8c510d3e158fdd0e9a42e75118bd9 ""
@@ -120,9 +120,9 @@
   "/usr/local/texlive/2026/texmf-dist/web2c/texmf.cnf" 1770478701 43630 e9fa012910491fe5ae08a72c3c2997a7 ""
   "/usr/local/texlive/2026/texmf-var/web2c/xetex/xelatex.fmt" 1778561638 5948563 8e105b6bbe3bdf0f93464a3c6551be1b ""
   "/usr/local/texlive/2026/texmf.cnf" 1774209515 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
-  "main.aux" 1779389548.5815 560 4de71c965e31062016f4c02cec087e79 "xelatex"
-  "main.out" 1779389548.55548 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
-  "main.tex" 1779389548.04717 3876 e66a3381cff89503980dc4d6f8c767c2 ""
+  "main.aux" 1779389752.40911 560 4de71c965e31062016f4c02cec087e79 "xelatex"
+  "main.out" 1779389752.37764 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
+  "main.tex" 1779389751.8217 3876 c4d514d73478da3479fb2853ecb1b0bd ""
   "preamble/config.tex" 1779381428.213 356 cae2419e5ee83c8759cab33338e2c122 ""
   "preamble/macros.tex" 1779381428.21298 453 a3adc45d52b6b19147d2b91236f1e2ff ""
   "preamble/packages.tex" 1779089801.98807 394 033f3a1d54d132fbba83b9caeb3e5530 ""
