@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.12)  19 MAY 2026 14:35
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.12)  22 MAY 2026 02:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -800,13 +800,14 @@ Package fontspec Info:
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"STFangsong/OT:script=hani;language=dflt;"
 
+
+Overfull \hbox (40.89856pt too wide) detected at line 30
+[]
+ []
+
 [1
 
 ]
-Overfull \hbox (0.5665pt too wide) detected at line 64
-\OML/cmm/m/it/12 c[] \OT1/cmr/m/n/12 = [][] [] [] [] [] [] \OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^Z\OT1/cmr/m/n/12 )[][] [] \OML/cmm/m/it/12 ^^Z [] \OT1/cmr/m/n/12 = [] [] \OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^Z\OT1/cmr/m/n/12 )[][] [] \OML/cmm/m/it/12 ^^Z [] ;
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -814,35 +815,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[2]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[3]
-Overfull \hbox (31.43684pt too wide) in paragraph at lines 165--166
- []\TU/TimesNewRoman(0)/b/n/12 8.[] \TU/STSong(0)/m/n/12 将 球 坐 标 系 中 的 函 数 $[][][][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r [] ^^R\OT1/cmr/m/n/12 )$ \TU/STSong(0)/m/n/12 变 换 到 柱 坐 标 系 $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^Z; ^^^; z\OT1/cmr/m/n/12 )$\TU/STSong(0)/m/n/12 ，|  立 即 可 以 发 现 $[][][][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r [] ^^R\OT1/cmr/m/n/12 ) =
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[4]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[5] (./main.aux)
+[2] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/07/14>
@@ -855,12 +828,12 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 16703 strings out of 468168
- 345792 string characters out of 5432815
- 789333 words of memory out of 5000000
- 45142 multiletter control sequences out of 15000+600000
- 640286 words of font info for 122 fonts, out of 8000000 for 9000
+ 16691 strings out of 468168
+ 344646 string characters out of 5432815
+ 796389 words of memory out of 5000000
+ 45128 multiletter control sequences out of 15000+600000
+ 640302 words of font info for 124 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 98i,13n,117p,625b,495s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,16n,117p,625b,495s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (5 pages, 33208 bytes).
+Output written on main.xdv (2 pages, 16584 bytes).

@@ -9,167 +9,62 @@
 \maketitle
 
 \paragraph{1.}
-偏微分方程和边界条件为
-\begin{align*}
-	&\pdv[2]{u}{t} - \frac{c^2}{\rho} \pdv{\rho}(\rho \pdv{u}{\rho}) = A\left(1 - \frac{\rho^2}{R^2}\right) \sin \omega t \\
-	&\eval{u}_{\rho = 0} < \infty, \quad \eval{u}_{\rho = R} = 0 \\
-	&\eval{u}_{t = 0} = 0, \quad \eval{\pdv{u}{t}}_{t = 0}
-\end{align*}
-
-首先寻找特解。
-设特解具有形式 $u_1(\rho, t) = f(\rho) \sin \omega t$, 代入非齐次偏微分方程得到关于 $f(\rho)$ 的微分方程
-\begin{equation*}
-	-\omega^2 f(\rho) - \frac{c^2}{\rho} \pdv{\rho}(\rho \pdv{f(\rho)}{\rho}) = A\left(1 - \frac{\rho^2}{R^2}\right).
-\end{equation*}
-由此不难得到一个特解为
-\begin{equation*}
-	u_1(\rho, t) = \frac{A}{\omega^2} \left[\frac{\rho^2}{R^2} - 1 + \frac{4c^2}{\omega^2 R^2}\left(\frac{\bessel{0}\left(\frac{\omega}{c} \rho\right)}{\bessel{0}\left(\frac{\omega}{c} R\right)} - 1\right)\right] \sin \omega t.
-\end{equation*}
-上述特解不改变边界条件.
-
-其次求解其次偏微分方程，有相应的初始条件变为
-\begin{equation*}
-	\eval{u_2}_{t = 0} = 0, \quad \eval{\pdv{u_2}{t}}_{t = 0} = \frac{A}{\omega} \left[\frac{\rho^2}{R^2} - 1 + \frac{4c^2}{\omega^2 R^2}\left(\frac{\bessel{0}\left(\frac{\omega}{c} \rho\right)}{\bessel{0}\left(\frac{\omega}{c} R\right)} - 1\right)\right],
-\end{equation*}
-得到通解
-\begin{equation*}
-	u_2(\rho, t) = \sum_{i = 1}^{\infty} c_i \sin \frac{\mu_{i}ct}{R} \bessel{0}\left(\frac{\mu_{i}}{R}\rho\right).
-\end{equation*}
-代入初始条件得到
-\begin{align*}
-	c_i = &\frac{R}{\mu_{i}c} \frac{2}{\bessel{1}^2(\mu_{i})} \int_{0}^{1} \frac{A}{\omega} \left[x^2 - 1 + \frac{4c^2}{\omega^2 R^2} \left(\frac{\bessel{0}\left(\frac{\omega R}{c}x\right)}{\bessel{0}\left(\frac{\omega R}{c}\right)} - 1\right)\right] \bessel{0}(\mu_{i}x) x\dd{x} \\
-	&= -\frac{8AR}{\omega c \mu_{i} \bessel{i}(\mu_i)} \left(\frac{1}{\mu_i^3} + \frac{c^2}{\omega^2 R^2}\right) + \frac{8Ac}{\omega^3 R} \frac{1}{\mu_i \bessel{0}(\omega R / c) \bessel{1}^2(\mu_i)} \int_{0}^{1} \bessel{0}\left(\frac{\omega R}{c} x\right) \bessel{0}(\mu_i x) x\dd{x}.
-\end{align*}
-故受迫振动解为
-\begin{equation*}
-	u(\rho, t) = \frac{A}{\omega^2} \left[\frac{\rho^2}{R^2} - 1 + \frac{4c^2}{\omega^2 R^2}\left(\frac{\bessel{0}\left(\frac{\omega}{c} \rho\right)}{\bessel{0}\left(\frac{\omega}{c} R\right)} - 1\right)\right] \sin \omega t + \sum_{i = 1}^{\infty} c_i \sin \frac{\mu_{i}ct}{R} \bessel{0}\left(\frac{\mu_{i}}{R}\rho\right),
-\end{equation*}
-其中 $\mu_i$ 为 0 阶 Bessel 函数的第 $i$ 个零点.
+\begin{flalign*}
+	(1) && &\dv{x}(x^2 \dv{y}{x}) + (\lambda x + x^2) = 0, p(x) = x^2, q(x) = -x^2, w(x) = x.&&\\
+	(2) && &\begin{aligned}
+		&\dv{x}\left[x^a (x - 1)^{b - a} \dv{y}{x}\right] + \lambda x^{a - 1} (x - 1)^{b - a - 1} y = 0,\\
+		&p(x) = x^a (x - 1)^{b - a}, q(x) = 0, w(x) = x^{a - 1} (x - 1)^{b - a - 1}.
+	\end{aligned}&&\\
+	(3) && &\dv{x}\left[\frac{x \mathrm{e}^{-x}}{(x - 1)^2} \dv{y}{x}\right] + \frac{\lambda \mathrm{e}^{-x}}{(x - 1)^2} y = 0, p(x) = \frac{x \mathrm{e}^{-x}}{(x - 1)^2}, q(x) = 0, w(x) = \frac{\mathrm{e}^{-x}}{(x - 1)^2}.&&\\
+	(4) && &\dv{x}(\mathrm{e}^{-x^2} \dv{y}{x}) + 2\lambda \mathrm{e}^{-x^2} = 0, p(x) = \mathrm{e}^{-x^2}, q(x) = 0, w(x) = 2\mathrm{e}^{-x^2}. &&
+\end{flalign*}
 
 \paragraph{2.}
-偏微分方程和边界条件为
+考虑 $y(x) \in D\left(\hat{L}\right), z(x) \in L^2[a, b]$，有
 \begin{align*}
-	&\pdv{u}{t} - \kappa \left[\frac{1}{\rho} \pdv{\rho}(\rho \pdv{u}{\rho}) + \pdv[2]{u}{z}\right] = 0\\
-	&\eval{u}_{\rho = 0} < \infty, \quad \eval{\pdv{u}{\rho}}_{\rho = a} = 0\\
-	&\eval{u}_{z = 0} = 0, \quad \eval{u}_{z = h} = 0\\
-	&\eval{u}_{t = 0} = u_0 f(\rho)
+	\braket{z}{\hat{L} y} &= \braket{\hat{L}^{\dagger} z}{y} \\
+	\Rightarrow \braket{z}{\hat{L} y} &= \int_a^b z^{*} \left\{-\dv{x}\left[p(x) \dv{y}{x}\right] + q(x) y\right\} \dd{x} \\
+	&= \eval{-z^{*} p(x) \dv{y}{x}}_{a}^{b} + \int_a^b p(x) \dv{z^{*}}{x} \dv{y}{x} \dd{x} + \int_a^b q(x) z^{*}(x) y(x) \dd{x} \\
+	&= \left[y(x) p(x) \dv{z^{*}(x)}{x} - z^{*}(x) p(x) \dv{y(x)}{x}\right]_{a}^{b} - \int_a^b \dv{x} \left[p(x) \dv{z^{*}}{x}\right] y(x) \dd{x} + \int_a^b q(x) z^{*}(x) y(x) \dd{x} \\
+	&= \left[y(x) p(x) \dv{z^{*}(x)}{x} - z^{*}(x) p(x) \dv{y(x)}{x}\right]_{a}^{b} + \braket{\hat{L}' z}{y} = \braket{\hat{L}^{\dagger} z}{y}.
 \end{align*}
-得到其通解为
+若 $\hat{L}$ 的伴算符存在，即要求边界项为 0，整理并代入 $y \in D\left(\hat{L}\right)$ 满足的边界条件得到
 \begin{equation*}
-	u(\rho, z, t) = \sum_{n, i = 1}^{\infty} c_{n, i} \sin \frac{n\pi z}{h} \bessel{0}\left(\frac{\mu_i}{a}\rho\right) \exp\left\{-\kappa\left[\left(\frac{\mu_i}{a}\right)^2 - \left(\frac{n\pi}{h}\right)^2\right] t\right\}.
+	y(a) \left[\frac{\cos \alpha}{c_1} z'^{*}(b) - \frac{\cos \beta}{c_2} z^{*}(b) - z'^{*}(a)\right] + y'(a)\left[-\frac{\sin \alpha}{c_1} z'^{*}(b) - \frac{\sin \beta}{c_2} z^{*}(b) + z^{*}(a)\right] = 0.
 \end{equation*}
-代入初始条件得
-\begin{equation*}
-	c_{n, i} = \frac{2}{a^2 \bessel{0}^2 (\mu_i)} \frac{2u_0}{h} \int_{0}^{h} \sin \frac{n\pi z}{h} \dd{z} \int_{0}^{a} f(\rho) \bessel{0}\left(\frac{\mu_i}{a}\rho\right) \rho \dd{\rho} = \frac{4u_0 [1 - (-1)^n]}{n\pi a^2 \bessel{1}^2(\mu_i)} \int_{0}^{a} f(\rho) \bessel{0}\left(\frac{\mu_i}{a}\rho\right) \rho \dd{\rho},
-\end{equation*}
-其中 $\mu_i$ 为 1 阶 Bessel 函数第 $i$ 个零点.
+上式对任意 $y(a), y'(a)$ 成立，故伴算符存在条件为
+\begin{align}
+	z'(a) &= \frac{\cos \alpha}{c_1} z'(b) - \frac{\cos \beta}{c_2} z(b), \label{eq1}\\
+	z(a) &= \frac{\sin \alpha}{c_1} z'(b) + \frac{\sin \beta}{c_2} z(b), \label{eq2}
+\end{align}
+此时 $\hat{L}$ 的伴算符为
+\begin{align*}
+	&\hat{L}^{\dagger} = -\dv{x}\left[p(x) \dv{x}\right] + q(x), \\
+	&D\left(\hat{L}\right) = \{y(x): a \leq x \leq b, y(x) \in L^2[a, b] \text{ 且满足 (\ref{eq1}) 和 (\ref{eq2})}\},
+\end{align*}
+当且仅当 $\sin(\alpha + \beta) = c_1 c_2$ 时 $\hat{L}$ 是自伴算符.
 
 \paragraph{3.}
-偏微分方程和边界条件为
+本征函数具有形式 $\mathrm{e}^{\mathrm{i} \pm \lambda x}$，取线形组合并带入边界条件得到
 \begin{align*}
-	&\frac{1}{\rho} \pdv{\rho}(\rho \pdv{u}{\rho}) + \pdv[2]{u}{z} = 0\\
-	&\eval{u}_{\rho = 0} < \infty, \quad \eval{u}_{\rho = a} = u_0\\
-	&\eval{u}_{z = 0} = 0, \quad \eval{u}_{z = h} = 0
+	C_1 + C_2 &= 0, \\
+	(1 - \beta)C_1 \mathrm{e}^{\mathrm{i} \lambda l} - (1 + \beta) C_2 \mathrm{e}^{-\mathrm{i} \lambda l} &= 0.
 \end{align*}
-其通解为
+由以上两式得到
 \begin{equation*}
-	u(\rho, z) = \sum_{n = 1}^{\infty} c_n \ibessel{0} \left(\frac{n\pi \rho}{h}\right) \sin \frac{n\pi z}{h},
+	2 \mathrm{i} \lambda l = \ln \frac{\beta + 1}{\beta - 1},
 \end{equation*}
-代入边界条件得
+并考虑到对数函数的多值性与 $0 < \beta \leq 1$，取近似得到本征值
 \begin{equation*}
-	c_n = \frac{2u_0}{n\pi} \frac{1 - (-1)^n}{\ibessel{0}(n\pi a / h)},
+	2 \mathrm{i} \lambda l = \ln \frac{\beta + 1}{\beta - 1} \approx 2\beta + \mathrm{i}(2n + 1)\pi \Rightarrow \lambda_n = \frac{-2 \mathrm{i} \beta + (2n + 1)\pi}{2l}, n \in \mathbb{Z}.
 \end{equation*}
-故稳态解为
-\begin{equation*}
-	u(\rho, z) = \frac{2u_0}{\pi} \sum_{n = 1}^{\infty} \frac{1 - (-1)^n}{n} \frac{\ibessel{0}(n\pi \rho / h)}{\ibessel{0}(n\pi a / h)} \sin \frac{n\pi z}{h}.
-\end{equation*}
+相应的本征函数为 $\{\mathrm{e}^{\beta x/l} \mathrm{e}^{\mathrm{i} \frac{(2n + 1)x}{2l}} - \mathrm{e}^{-\beta x/l} \mathrm{e}^{-\mathrm{i} \frac{(2n + 1)x}{2l}}\}$.
 
 \paragraph{4.}
-三角函数形式的 Bessel 函数生成函数为
+本征函数具有形式 $\mathrm{e}^{-\mathrm{i} \lambda x}$，带入边界条件得到
 \begin{equation*}
-	\sin(x \sin \theta) = 2 \sum_{n = 0}^{\infty} \bessel{2n + 1}(x) \sin (2n + 1)\theta.
+	\mathrm{e}^{-\mathrm{i} \lambda b} = \mathrm{e}^{\mathrm{i} \theta} \mathrm{e}^{-\mathrm{i} \lambda a} \Rightarrow \lambda_n = \frac{\theta + 2n\pi}{a - b}, n \in \mathbb{Z},
 \end{equation*}
-对上式求导，得到
-\begin{equation*}
-	\cos(x \sin \theta) x\cos\theta = 2 \sum_{n = 0}^{\infty} (2n + 1)\bessel{2n + 1}(x) \cos (2n + 1)\theta,
-\end{equation*}
-取 $\theta = 0$，即得
-\begin{equation*}
-	\sum_{n = 0}^{\infty} (2n + 1)\bessel{2n + 1}(x) = \frac{x}{2}.
-\end{equation*}
-
-\paragraph{5.}
-偏微分方程和边界条件为
-\begin{align*}
-	&\pdv{u}{t} - \kappa \left[\frac{1}{r^2} \pdv{r}(r^2 \pdv{u}{r}) + \frac{1}{r^2 \sin \theta} \pdv{u}(\sin \theta \pdv{u}{\theta})\right] = r\cos \theta \\
-	&\eval{u}_{r = 0} < \infty, \quad \eval{u}_{r = a} = 0 \\
-	&\eval{u}_{\theta = 0} < \infty, \quad \eval{u}_{\theta = \pi / 2} = 0 \\
-	&\eval{u}_{t = 0} = 0
-\end{align*}
-满足边界条件的本征函数组合应为
-\begin{equation*}
-	u(r, \theta, t) = \sum_{\substack{n = 0 \\ m = 1}}^{\infty} T_{mn}(t) j_{2n}\left(\frac{\mu_{m, n}}{a}r\right) P_{2n}(\cos \theta).
-\end{equation*}
-将源项按本征函数展开，得到系数
-\begin{equation*}
-	A_{mn} = \frac{2(4n + 1)a}{j_{2n + 1}^2(\mu_{m, n})} \int_{0}^{1} x^3 j_{2n}(\mu_{m, n} x) \dd{x} \int_{0}^{1} y P_{2n}(y) \dd{y}. 
-\end{equation*}
-代入初始条件得
-\begin{equation*}
-	u(r, \theta, t) = \frac{a^2}{\kappa} \sum_{\substack{n = 0 \\ m = 1}}^{\infty} \frac{A_{mn}}{\mu_{m, n}^2} \left(1 - \mathrm{e}^{-\kappa \mu_{m, n}^2 t / a^2}\right) j_{2n}\left(\frac{\mu_{m, n}}{a}r\right) P_{2n}(\cos \theta),
-\end{equation*}
-其中 $\mu_{m, n}$ 为 $2n$ 阶球 Bessel 函数的第 $m$ 个零点.
-
-\paragraph{6.}
-扩散方程的形式为
-\begin{equation*}
-	\laplacian{u} + k^2 u = 0
-\end{equation*}
-在球坐标内为 0 阶球 Bessel 方程，其有限解为
-\begin{equation*}
-	u(r) = A \frac{\sin kr}{r},
-\end{equation*}
-故临界半径为最小 0 点 $R_c = \pi / k$.
-
-在柱坐标内扩散方程为 0 阶 Bessel 方程，其有限解为
-\begin{equation*}
-	u(r) = A_0 \bessel{0}(kr),
-\end{equation*}
-故临界半径为 $R_c = \mu_1 / k \approx 2.404 / k$.
-
-\paragraph{7.}
-计算函数的前几项导数：
-\begin{equation*}
-	\eval{f}_{t = 0} = \frac{\cos z}{z}, \quad \eval{\pdv{f}{t}}_{t = 0} = \frac{\sin z}{z}, \quad \quad \eval{\pdv[2]{f}{t}}_{t = 0} = \frac{\sin z - z\cos z}{z^2},
-\end{equation*}
-不难发现即为前几阶球 Bessel 函数.
-记 $u = \sqrt{z^2 - 2zt}$，有
-\begin{equation*}
-	\dv{t} = -\frac{z}{u} \dv{u},
-\end{equation*}
-假设
-\begin{equation*}
-	f^{(k)}(t) = z^{k - 1} u^{-(k - 1)} j_{k - 1}(u),
-\end{equation*}
-有
-\begin{equation*}
-	f^{(k + 1)}(t) = -\frac{z}{u} \dv{u} \left[z^{k - 1} u^{-(k - 1)} j_{k - 1}(u)\right] = z^k u^{-k} j_k(u),
-\end{equation*}
-其中利用了球 Bessel 函数的递推公式 $\dv{z}\left[z^{-\nu} j_{\nu}(z)\right] = -z^{-\nu} j_{\nu + 1}(z)$.
-故由数学归纳法，得到原函数的 Taylor 展开为
-\begin{equation*}
-	\frac{1}{z} \cos \sqrt{z^2 - 2zt} = \sum_{n = 0}^{\infty} \frac{j_{n - 1}(z)}{n!} t^n.
-\end{equation*}
-
-\paragraph{8.}
-将球坐标系中的函数 $\mathrm{e}^{r\cos \theta} \bessel{0}(r \sin \theta)$ 变换到柱坐标系 $(\rho, \phi, z)$，立即可以发现 $\mathrm{e}^{r\cos \theta} \bessel{0}(r \sin \theta) = \mathrm{e}^z \bessel{0}(\rho)$ 是 Laplace 方程的解且具有 $\phi$ 方向对称性，故在球坐标中可以将其展开为
-\begin{equation*}
-	\mathrm{e}^{r\cos \theta} \bessel{0}(r \sin \theta) = \sum_{l = 0}^{\infty} A_l r^l P_l(\cos \theta).
-\end{equation*}
-令 $\theta = 0$，函数化为 $\mathrm{e}^l$，由指数函数的 Taylor 展开以及 唯一性可以直接定出 $A_l = 1 / l!$，即
-\begin{equation*}
-	\mathrm{e}^{r\cos \theta} \bessel{0}(r \sin \theta) = \sum_{l = 0}^{\infty} \frac{r^l}{l!} P_l(\cos \theta).
-\end{equation*}
-
+相应的本征函数为 $\{\mathrm{e}^{\mathrm{i} \frac{\theta + 2n\pi}{b - a} x}\}$.
 
 \end{document}
