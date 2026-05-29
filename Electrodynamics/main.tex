@@ -8,205 +8,104 @@
 
 \maketitle
 
-\paragraph{郭书\; 4.2}
-由 Snell 定律得到折射角
-\begin{equation*}
-  \sin \theta = n\sin r, \theta = 45^{\circ}, n = \sqrt{\varepsilon_r} = \sqrt{2} \Rightarrow r = 30^{\circ}.
-\end{equation*}
-再根据 Fresnel 公式：
-\begin{gather*}
-  R = \left(\frac{\cos \theta - n\cos r}{\cos \theta + n\cos r}\right)^2 = \frac{2 - \sqrt{3}}{2 + \sqrt{3}}, \\
-  T = \frac{n\cos r}{\cos \theta} \left(\frac{2\cos \theta}{\cos \theta + n \cos r}\right)^2 = \frac{2\sqrt{3}}{2 + \sqrt{3}}.
-\end{gather*}
-
-\paragraph{郭书\; 4.4 (1)}
-根据各向异性介质中的本构关系
-\begin{equation*}
-  \vb{B} = \mu \vb{H}, \quad \vb{D} = \bar{\epsilon} \cdot \vb{E},
-\end{equation*}
-可以直接写出无源各向异性介质中电磁波满足的 Maxwell 方程：
-\begin{align*}
-  \div{\vb{D}} = 0 &\Rightarrow \vb{k} \cdot \vb{D} = 0 \tag{2.1} \label{eq2-1} \\
-  \curl{\vb{H}} - \pdv{\vb{D}}{t} = 0 &\Rightarrow \vb{k} \times \vb{B} = -\omega \mu \vb{D} \tag{2.2} \label{eq2-2} \\
-  \div{\vb{B}} = 0 &\Rightarrow \vb{k} \cdot \vb{B} = 0 \tag{2.3} \label{eq2-3}\\
-  \curl{\vb{E}} + \pdv{\vb{B}}{t} = 0 &\Rightarrow \vb{k} \times \vb{E} = \omega \vb{B} \tag{2.4} \label{eq2-4}
-\end{align*}
-由式 (\ref{eq2-2}) 及式 (\ref{eq2-4}) 得
-\begin{equation*}
-  \vb{B} \cdot \vb{D} = - \frac{1}{\omega \mu} \vb{B} \cdot \left(\vb{k} \times \vb{B}\right) = 0, \quad \vb{B} \cdot \vb{E} = \frac{1}{\omega} (\vb{k} \times \vb{E}) \cdot \vb{E} = 0,
-\end{equation*}
-故有 $\vb{k} \cdot \vb{B} = \vb{k} \cdot \vb{D} = \vb{B} \cdot \vb{D} = \vb{B} \cdot \vb{E} = 0$.
-
-讲义 (4.84) 式给出
-\begin{equation*}
-  \vb{k} \times (\vb{k} \times \vb{E}) + \omega^2 (\bar{\epsilon} \cdot \vb{E}) = 0,
-\end{equation*}
-展开该三重积，我们得到
-\begin{equation*}
-  (\vb{k} \cdot \vb{E}) \vb{k} = k^2 \vb{E} - \omega^2 (\bar{\epsilon} \cdot \vb{E}) = k^2 \vb{E} - \omega^2 \mu \vb{D}.
-\end{equation*}
-由于 $\vb{E}$ 与 $\vb{D}$ 一般不平行，故 $\vb{k} \cdot \vb{E}$ 一般不为 0.
+\paragraph{5-2. 推迟的场叶菲缅科(Jefimenko)公式. (1)}
+\stepcounter{section}
+\begin{proof}
+  真空中的麦克斯韦方程
+  \begin{align}
+    \div{\vb{E}} &= \rho / \epsilon_0, \label{eq1-1}\\
+    \curl{\vb{B}} - \frac{1}{c^2} \pdv{\vb{E}}{t} &= \mu_0 \vb{J}, \label{eq1-2}\\
+    \curl{\vb{E}} + \pdv{\vb{B}}{t} &= 0, \label{eq1-3}\\
+    \div{\vb{B}} &= 0. \label{eq1-4}
+  \end{align}
+  对 (\ref{eq1-3}) 式取旋度得到
+  \begin{equation*}
+    \grad(\div{\vb{E}}) - \laplacian{\vb{E}} + \pdv{t}(\curl{\vb{B}}) = 0,
+  \end{equation*}
+  再代入 (\ref{eq1-1}) 式和 (\ref{eq1-2}) 式，
+  \begin{gather}
+    \frac{1}{\epsilon_0} \grad{\rho} - \laplacian{\vb{E}} + \pdv{t} \left[\frac{1}{c^2} \pdv{\vb{E}}{t} + \mu_0 \vb{J}\right] = 0 \notag\\
+    \Rightarrow \left[\laplacian - \frac{1}{c^2} \pdv[2]{t}\right] \vb{E}(\vb{x}, t) = -\frac{1}{\epsilon_0} \left[-\grad{\rho} - \frac{1}{c^2} \pdv{\vb{J}}{t}\right].
+  \end{gather}
+  同样地，对 (\ref{eq1-2}) 式取旋度并结合 (\ref{eq1-4}) 得到
+  \begin{equation*}
+    -\laplacian{\vb{B}} - \frac{1}{c^2} \pdv{t}(\curl{\vb{E}}) = \mu_0 \curl{\vb{J}},
+  \end{equation*}
+  代入 (\ref{eq1-3}) 式，
+  \begin{equation}
+    \left[\laplacian - \frac{1}{c^2} \pdv[2]{t}\right] \vb{B}(\vb{x}, t) = -\mu_0 \curl{\vb{J}}.
+  \end{equation}
+\end{proof}
 
 \paragraph{(2)}
-同样由讲义 (4.84) 式，通过上一小题中的变形不难发现
+利用 Fourier 变换可以解出符合物理因果律的推迟格林函数
 \begin{equation*}
-  \vb{D} = \frac{1}{\omega^2 \mu} [k^2 \vb{E} - (\vb{k} \cdot \vb{E}) \vb{E}].
+  G^{(+)}(R, \tau) = \frac{\delta \left(t' - \left[t - \frac{R}{c}\right]\right)}{R},
 \end{equation*}
+由此可以积分得到波动方程的解为
+\begin{align}
+  \vb{E}(\vb{x}, t) &= \frac{1}{4\pi \epsilon_0} \int \dd[3]{\vb{x'}} \dd{t'} \frac{\delta \left(t' - \left[t - \frac{R}{c}\right]\right)}{R} \left[-\nabla' \rho - \frac{1}{c^2} \pdv{\vb{J}}{t'}\right] 
+  = \frac{1}{4\pi \epsilon_0} \int \dd[3]{\vb{x'}} \frac{1}{R} \left[-\grad{\rho} - \frac{1}{c^2} \pdv{\vb{J}}{t}\right]_{\mathrm{ret}}, \\
+  \vb{B}(\vb{x}, t) &= \frac{\mu_0}{4\pi} \int \dd[3]{\vb{x'}} \dd{t'} \frac{\delta \left(t' - \left[t - \frac{R}{c}\right]\right)}{R} [\nabla' \times \vb{J}]
+  = \frac{\mu_0}{4\pi} \int \dd[3]{\vb{x'}} \frac{1}{R} [\nabla' \times \vb{J}]_{\mathrm{ret}}.
+\end{align}
 
-\paragraph{(3)}
-考虑能流与波矢的叉积：
-\begin{equation*}
-  \vb{k} \times \vb{S} = \frac{1}{\mu} \vb{k} \times (\vb{E} \times \vb{B}) = \frac{1}{\mu} [(\vb{k} \cdot \vb{B}) \vb{E} - (\vb{k} \cdot \vb{E}) \vb{B}] = -\frac{1}{\mu} (\vb{k} \cdot \vb{E}) \vb{B}.
-\end{equation*}
-由于 $\vb{k} \cdot \vb{E}$ 一般不为 0，故一般 $\vb{k} \times \vb{S} \neq 0$，即能流 $\vb{S}$ 和波矢 $\vb{k}$ 一般不在同一方向上.
+\paragraph{4. 推导长波近似下的电偶极辐射电磁场.}
+书 (5.19) 式给出了长波近似下的磁矢势
+\begin{equation}
+  \vb{A}(\vb{x}) = -\frac{\mathrm{i} \mu_0 \omega}{4\pi} \vb{p} \frac{\mathrm{e}^{\mathrm{i} kr}}{r}. \tag{5.19}
+\end{equation}
+利用书 (5.14) 式以及书 (5.20) 式给出的矢量分析公式，有磁场
+\begin{align}
+  \vb{H} = \frac{1}{\mu_0} \curl{\vb{A}} &= -\frac{\mathrm{i} \omega}{4\pi} \curl(\vb{p} \frac{\mathrm{e}^{\mathrm{i} kr}}{r}) = -\frac{\mathrm{i} \omega}{4\pi} \grad{\frac{\mathrm{e}^{\mathrm{i} kr}}{r}} \times \vb{p} \notag\\
+  &= \frac{ck^2}{4\pi} (\vb{n} \times \vb{p}) \frac{\mathrm{e}^{\mathrm{i} kr}}{r} \left(1 - \frac{1}{\mathrm{i} kr}\right).
+\end{align}
+进而有
+\begin{align}
+  \vb{E} &= \frac{\mathrm{i} Z_0}{k} \curl{\vb{H}} = \frac{\mathrm{i} k}{4\pi \epsilon_0} \curl \left[(\vb{n} \times \vb{p}) \frac{\mathrm{e}^{\mathrm{i} kr}}{r} \left(1 - \frac{1}{\mathrm{i} kr}\right)\right] \notag\\
+  &= \frac{\mathrm{i} k}{4\pi \epsilon_0} \left\{\grad[\frac{\mathrm{e}^{\mathrm{i} kr}}{r} \left(1 - \frac{1}{\mathrm{i} kr}\right)] \times (\vb{n} \times \vb{p}) + \frac{\mathrm{e}^{\mathrm{i} kr}}{r} \left(1 - \frac{1}{\mathrm{i} kr}\right) \curl(\vb{n} \times \vb{p})\right\} \notag\\
+  &= \frac{\mathrm{i} k}{4\pi \epsilon_0} \left\{\left(\mathrm{i}k - \frac{2}{r} + \frac{2}{\mathrm{i} kr^2}\right) \frac{\mathrm{e}^{\mathrm{i} kr}}{r} [\vb{n} \times (\vb{n} \times \vb{p})] + \frac{1}{\mathrm{i} k} \left(\frac{1}{r^3} - \frac{\mathrm{i} k}{r^2}\right) [\vb{n}(\vb{n} \cdot \vb{p}) - \vb{p}]\right\} \notag\\
+  &= \frac{1}{4\pi \epsilon_0} \left\{k^2 (\vb{n} \times \vb{p}) \times \vb{n} \frac{\mathrm{e}^{\mathrm{i} kr}}{r} + [3\vb{n} (\vb{n} \cdot \vb{p}) - \vb{p}]\left(\frac{1}{r^3} - \frac{\mathrm{i} k}{r^2}\right) \mathrm{e}^{\mathrm{i} kr}\right\}.
+\end{align}
 
-\paragraph{郭书\; 4.8}
-波矢切向分量应当相等，即有（假设入射面为 $xz$ 平面）
+\paragraph{郭书 5.10}
+在直角坐标中可以将磁偶极矩表示为
 \begin{equation*}
-  \beta_{x} = \frac{\omega}{c} \sin \theta_1, \quad \beta_{y} = 0,
+  \vb{m} = \frac{4\pi}{3} M_0 R_0^3 \mathrm{e}^{-\mathrm{i} \omega t} (\vb{e}_x + \mathrm{i} \vb{e}_y),
 \end{equation*}
-因此导体中的波矢可以设为
+转换到球坐标中，
 \begin{equation*}
-  \vb{k} = \vb*{\beta} + \mathrm{i} \vb*{\alpha} = \beta_x \hat{\vb{x}} + \beta_z \hat{\vb{z}} + \mathrm{i} \alpha_z \hat{\vb{z}}, \tag{3.1} \label{eq3-1}
+  \vb{m} = \frac{4\pi}{3} M_0 R_0^3 \mathrm{e}^{-\mathrm{i} \omega t + \mathrm{i} \phi} (\sin \theta \vb{e}_R + \cos \theta \vb{e}_{\theta} + \mathrm{i} \vb{e}_{\phi}). 
 \end{equation*}
-满足讲义 (4.34) 式
-\begin{equation*}
-  k^2 = \mu \varepsilon \omega^2 \left(1 + \mathrm{i} \frac{\sigma}{\omega \varepsilon}\right).
-\end{equation*}
-代入 (\ref{eq3-1}) 式得到
-\begin{equation*}
-  \beta_z^2 - \alpha_z^2 = \mu \varepsilon \omega^2 - \frac{\omega^2}{c^2} \sin^2 \theta_1^2, \quad 2\beta_z \alpha_z = \mu \omega \sigma,
-\end{equation*}
-解得
+带入辐射电磁场磁偶极项表达式
 \begin{align*}
-  \beta_z^2 &= \frac{1}{2} \left(\mu \varepsilon \omega^2 - \frac{\omega^2}{c^2} \sin^2 \theta_1^2\right) + \frac{1}{2} \left[\left(\mu \varepsilon \omega^2 - \frac{\omega^2}{c^2} \sin^2 \theta_1^2\right)^2 + (\mu \omega \sigma)^2\right]^{\frac{1}{2}}, \\
-  \alpha^2 &= \alpha_z^2 = - \frac{1}{2} \left(\mu \varepsilon \omega^2 - \frac{\omega^2}{c^2} \sin^2 \theta_1^2\right) + \frac{1}{2} \left[\left(\mu \varepsilon \omega^2 - \frac{\omega^2}{c^2} \sin^2 \theta_1^2\right)^2 + (\mu \omega \sigma)^2\right]^{\frac{1}{2}}.
+  \vb{B} &= \frac{\mu_0 \mathrm{e}^{\mathrm{i} kR}}{4\pi c^2 R} (\ddot{\vb{m}} \times \vb{e}_R) \times \vb{e}_R = \frac{\mu_0 \omega^2 R_0^3 M_0}{3c^2 R} (\vb{e}_{\theta} \cos \theta + \mathrm{i} \vb{e}_{\phi}) \mathrm{e}^{\mathrm{i}(kR - \omega t + \phi)}, \\
+  \vb{E} &= -\frac{\mu_0 \mathrm{e}^{\mathrm{i} kR}}{4\pi cR} (\ddot{\vb{m}} \times \vb{e}_R) = \frac{\mu_0 \omega^2 R_0^3 M_0}{3c R} (\mathrm{i} \vb{e}_{\theta} - \vb{e}_{\phi} \cos{\theta}) \mathrm{e}^{\mathrm{i}(kR - \omega t + \phi)},
 \end{align*}
-介质内电磁波可表示为
+故有
 \begin{equation*}
-  \vb{E}' = \vb{E}'_0 \mathrm{e}^{\mathrm{i}(\vb{k} \cdot \vb{x} - \omega t)} = \vb{E}'_0 \mathrm{e}^{-\alpha_z z} \mathrm{e}^{\mathrm{i}(\vb{\beta} \cdot \vb{x} - \omega t)},
-\end{equation*}
-故相速度 $v_p = \omega / \beta$，衰减长度为 $1 / \alpha$.
-
-若导电介质为金属，即 $\sigma / (\omega \varepsilon) \gg 1$，则上述结论可以近似为
-\begin{equation*}
-  \beta_z \simeq \sqrt{\frac{\omega \mu \sigma}{2}}, \quad \alpha \simeq \sqrt{\frac{\omega \mu \sigma}{2}}.
+  \vb{S} = \frac{1}{2\mu_0} \Re(\vb{E}^{*} \times \vb{B}) = \frac{\mu_0 \omega^4 R_0^6 M_0^2}{18 c^3 R^2} (1 + \cos^2 \theta) \vb{e}_R.
 \end{equation*}
 
-\paragraph{郭书\; 4.9}
-直接求解三维 Helmholtz 方程
+\paragraph{郭书 5.11}
+直角坐标中电偶极矩表示为
 \begin{equation*}
-  (\laplacian + \mu \epsilon \omega^2) \vb{E} = 0
+  \vb{p} = ea \mathrm{e}^{-\mathrm{i} \omega t} (\vb{e}_x + \mathrm{i} \vb{e}_y),
 \end{equation*}
-边界条件为
+相应的球坐标表示为
+\begin{equation*}
+  \vb{p} = ea \mathrm{e}^{-\mathrm{i} \omega t + \mathrm{i} \phi} (\sin \theta \vb{e}_R + \cos \theta \vb{e}_{\theta} + \mathrm{i} \vb{e}_{\phi}). 
+\end{equation*}
+带入辐射电磁场电偶极项表达式
 \begin{align*}
-  x = 0, a, \quad \hat{\vb{e}}_1 \times \vb{E} = 0 &\Rightarrow E_y(x = 0, a) = 0, E_z(x = 0, a) = 0 \\
-  y = 0, b, \quad \hat{\vb{e}}_2 \times \vb{E} = 0 &\Rightarrow E_x(y = 0, b) = 0, E_z(y = 0, b) = 0
+  \vb{E} &= \frac{\mathrm{e}^{\mathrm{i} kR}}{4\pi \epsilon_0 c^2 R} (\ddot{\vb{p}} \times \vb{e}_R) \times \vb{e}_R = \frac{\omega^2 ea}{4\pi \epsilon_0 c^2 R} (\vb{e}_{\theta} \cos \theta + \mathrm{i} \vb{e}_{\phi}) \mathrm{e}^{\mathrm{i}(kR - \omega t + \phi)}, \\
+  \vb{B} &= \frac{\mathrm{e}^{\mathrm{i} kR}}{4\pi \epsilon_0 c^3 R} \ddot{\vb{p}} \times \vb{e}_R = \frac{\omega^2 ea}{4\pi \epsilon_0 c^3 R} (\vb{e}_{\phi} \cos \theta - \mathrm{i} \vb{e}_{\theta}) \mathrm{e}^{\mathrm{i}(kR - \omega t + \phi)},
 \end{align*}
-特别的，$z = 0$ 处的理想导体还给出边界条件
+辐射能流
 \begin{equation*}
-  \hat{\vb{e}}_3 \times \vb{E}_{\perp} = 0, \quad  \hat{\vb{e}}_3 \cdot \vb{B} = 0 \Rightarrow E_x(z = 0^{-}) = E_y(z = 0^{-}) = B_z(z = 0^{-}) = 0.
-\end{equation*}
-结合讲义式 (4.121)，有
-\begin{equation*}
-  -\pdv{E_z}{z} = \nabla_{\perp} \cdot \vb{E}_{\perp},
-\end{equation*}
-结合上述关系，分离变量，不难得到一般解
-\begin{align*}
-  E_x &= A_x \cos \frac{m\pi x}{a} \sin \frac{n\pi y}{b} \sin k_z z, \\
-  E_x &= A_y \cos \frac{m\pi x}{a} \cos \frac{n\pi y}{b} \sin k_z z, \\
-  E_z &= A_z \sin \frac{m\pi x}{z} \sin \frac{n\pi y}{b} \cos k_z z,
-\end{align*}
-其中
-\begin{equation*}
-  k_z = \sqrt{\mu \epsilon \omega^2 - \left(\frac{m\pi}{a}\right)^2 - \left(\frac{n\pi}{b}\right)^2},
-\end{equation*}
-系数满足
-\begin{equation*}
-  A_x \frac{m\pi}{a} + A_y \frac{n\pi}{b} + k_z A_z = 0.
+  \vb{S} = \frac{1}{2\mu_0} \Re(\vb{E}^{*} \times \vb{B}) = \frac{\mu_0 \omega^4 e^2 a^2}{32\pi^2 cR^2} (1 + \cos^2 \theta) \vb{e}_R.
 \end{equation*}
 
-\paragraph{4-1. 表面等离极化激元.}
-\paragraph{(1)}
-假设 $\vb{H}$ 具有与 $\vb{E}$ 相同的传播模式，可以将介质 1 ($z < 0$) 中的 Maxwell 方程改写为
-\begin{align*}
-  \mathrm{i} k_3^{(1)} H_2^{(1)} + \mathrm{i} \omega \epsilon_1 E_1^{(1)} = \sigma E_1^{(1)}, &\quad \mathrm{i} \mu_0 \omega H_1^{(1)} = 0, \\
-  -\mathrm{i} k_3^{(1)} H_1^{(1)} - \mathrm{i} k_1 H_3^{(1)} = 0, &\quad -\mathrm{i} k_3^{(1)} E_1^{(1)} - \mathrm{i} k_1 E_3^{(1)} - \mathrm{i} \mu_0 \omega H_2^{(1)} = 0, \\
-  \mathrm{i} k_1 H_2^{(1)} + \mathrm{i} \omega \epsilon_1 E_3^{(1)} = \sigma E_3^{(1)}, &\quad -\mathrm{i} \mu_0 \omega H_3^{(1)} = 0, \\
-  k_1 E_1^{(1)} - k_3^{(1)} E_3^{(1)} = 0, &\quad k_1 H_1^{(1)} - k_3^{(1)} H_3^{(1)} = 0.
-\end{align*}
-不难发现题述模式满足上述方程组，相应的磁场强度为
-\begin{equation*}
-  \vb{H}^{(1)} = (0, H_2^{(1)}, 0), \quad H_2^{(1)} = - E_0 \frac{\omega \bar{\epsilon}_1}{k_3^{(1)}} \mathrm{e}^{\mathrm{i} k_1 x - \mathrm{i} k_3^{(1)}z - \mathrm{i} \omega t}.
-\end{equation*}
-类似的可以得到介质 2 ($z > 0$) 中的磁场强度
-\begin{equation*}
-  \vb{H}^{(2)} = (0, H_2^{(2)}, 0), \quad H_2^{(2)} = E_0 \frac{\omega \bar{\epsilon}_2}{k_3^{(2)}} \mathrm{e}^{\mathrm{i} k_1 x + \mathrm{i} k_3^{(2)}z - \mathrm{i} \omega t}.
-\end{equation*}
-上述计算表明在该传播模式下 $H_z = 0$，故该模式为 TM 波.
-
-\paragraph{(2)}
-取 $k_1$ 为实数而 $k_3^{(1, 2)} = \mathrm{i} \kappa_{1, 2}$ 为纯虚数，能流密度为
-\begin{equation*}
-  \vb{S}^{(i)} = \frac{1}{2} \Re{\vb{E}^{(i)} \times \vb{H^{*}}^{(i)}} = E_0^2 \frac{k_1 \omega \bar{\epsilon}_i}{2 \kappa_i^2} \hat{\vb{z}}.
-\end{equation*}
-边界条件要求在 $z = 0$ 处
-\begin{equation*}
-  E_1^{(1)} = E_1^{(2)}, \quad H_2^{(1)} = H_2^{(2)},
-\end{equation*}
-同时有色散关系
-\begin{equation*}
-  k_1^2 - \kappa_i^2 = \mu \epsilon_i \omega^2, \quad i = 1, 2.
-\end{equation*}
-我们得到
-\begin{equation*}
-  \frac{\epsilon_1}{\kappa_1} = -\frac{\epsilon_2}{\kappa_2}, \quad k_1^2 = \frac{\omega^2}{c^2} \left(\frac{\epsilon_1 \epsilon_2}{\epsilon_1 + \epsilon_2}\right).
-\end{equation*}
-上述条件要求 $\epsilon_1$ 与 $\epsilon_2$ 异号且 $\epsilon_1 + \epsilon_2 < 0$.
-
-\paragraph{(3)}
-考虑金属介电常数变为 $\epsilon_1 + \mathrm{i} \epsilon_1'$，则波矢也会出现一个很小的虚部 $k_1'$:
-\begin{equation*}
-  k_1' = \epsilon_1' \dv{k_1}{\dv{\epsilon_1}} = \frac{k_1}{2} \frac{\epsilon_2}{\epsilon_1 (\epsilon_1 + \epsilon_2)} \epsilon_1'.
-\end{equation*}
-因此衰减长度为 $\delta = 1/k_1'$.
-
-\paragraph{4-6. 均匀磁场中电磁波的传播.}
-自由电子运动方程为
-\begin{equation*}
-  m \ddot{\vb{x}} = e \dot{\vb{x}} \times \vb{B}_0 + e \vb{E}_0 \mathrm{e}^{\mathrm{i} \vb{k} \cdot \vb{x} - \mathrm{i} \omega t},
-\end{equation*}
-写成分量形式
-\begin{equation*}
-  (\omega^2 \delta_{ij} + \mathrm{i} \omega \omega_{\text{B}} \epsilon_{ijk} b_k) x_i = -\frac{e}{m} E_j,
-\end{equation*}
-代入本构关系 $P_i = NZe x_i = \epsilon_0 \chi_{ij} E_j$ 得到电极化率张量 $\chi_{ij}$ 满足
-\begin{equation*}
-  (\omega^2 \delta_{ij} + \mathrm{i} \omega \omega_{\text{B}} \epsilon_{ijk} b_k) \chi_{ij} E_j = - \omega_p^2 E_{j} \Rightarrow \chi^{-1}_{ij}  = -\frac{1}{\omega_{\text{p}}^2} (\omega^2 \delta_{ij} + \mathrm{i} \omega \omega_B \epsilon_{ijk} b_k)
-\end{equation*}
-分别考虑对称部分和反对称部分，可以计算得到 $\chi_{ij}$ 表达式
-\begin{equation*}
-  \chi_{ij}(\omega) = -\frac{\omega_{\text{p}}^2}{\omega^2 (\omega^2 - \omega_{\text{B}}^2)}[\omega^2 \tensor{\delta}{_i_j} - \omega_{\text{B}}^2 b_i b_j - \mathrm{i} \omega \omega_{\text{B}} \epsilon_{ijk} b_k].
-\end{equation*}
-
-不妨令 $\vb{b}$ 为 $z$ 方向单位矢量，则电极化率张量可以写成矩阵形式
-\begin{equation*}
-  \epsilon(\omega) = \epsilon_0 \begin{pmatrix}
-    S & -\mathrm{i} D & 0 \\
-    \mathrm{i} D & S & 0 \\
-    0 & 0 & P
-  \end{pmatrix}, \quad P = 1 - \frac{\omega_{\text{p}}^2}{\omega^2},\quad S = 1 - \frac{\omega_{\text{p}}^2}{\omega^2 - \omega_{\text{B}}^2},\quad D = \frac{\omega_{\text{B}} \omega_{\text{p}}^2}{\omega (\omega^2 - \omega_{\text{B}}^2)}.
-\end{equation*}
-则相应的三个本征值为
-\begin{equation*}
-  \epsilon_{P} = \epsilon_0 P, \quad \epsilon_{R} = \epsilon_0 (S + D), \quad \epsilon_{L} = \epsilon_0 (S - D),
-\end{equation*}
-分别对应无磁场时的介电常数、右旋圆极化波和左旋圆极化波.
-从中可以发现右旋与左旋圆偏振光在介质中的传播速度不同，导致了旋光现象.
-对平行于 $z$ 轴的电磁波 ($\vb{E} \parallel \vb{B}_0$)，其折射率 $n_0^2 = P = 1 - \frac{\omega_{\text{p}}^2}{\omega^2}$；
-对垂直于 $z$ 轴的电磁波 ($\vb{E} \perp \vb{B}_0$)，其折射率为 $n_e^2 = \frac{S^2 - D^2}{S}$，二者不等导致双折射现象.
-
-
-
+\paragraph{8-1. }
 
 \end{document}
