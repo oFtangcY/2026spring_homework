@@ -9,124 +9,215 @@
 \maketitle
 
 \subsubsection*{Problem 1:}
+In the following weight diagrams, the subscript of each weight is its multiplicity;
+Arrows in the same direction represent operating with the same root.
 \paragraph{(1)}
-There are three types of roots:
-\begin{itemize}
-  \item $e_i - e_j = \sum_{k = i}^{j - 1} \alpha_k$, $1 \leq i < j \leq n$;
-  \item $2e_i = 2\sum_{k = i}^{n - 1} \alpha_k + \alpha_n$;
-  \item $e_i + e_j = \sum_{k = i}^{j - 1} \alpha_k + 2\sum_{k = j}^{n - 1} \alpha_k + \alpha_n$, $1 \leq i < j \leq n$;
-\end{itemize}
-Together with their negatives form the root system of $C_n$.
+$\dim(\mathfrak{g}) = 10$, and $\mathfrak{g}$ is non-self-dual.
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.35\textwidth]{figure/p1_1/wd_A2_3-0.pdf}
+\end{figure}
 
+\newpage
 \paragraph{(2)}
-Three types of Weyl group elements are corresponding to the three types of roots ($x$ is an arbitrary vector $x = x_i e_i$):
-\begin{itemize}
-  \item $s_{e_i - e_j} x = (x_1, \cdots, x_{i - 1}, x_j, x_{i + 1}, \ldots, x_{j - 1}, x_{i}, x_{j + 1}, \ldots, x_n)$, making the reflection on $\mathbb{R}^n$ by swapping the $i$-th and $j$-th coordinates;
-  \item $s_{2e_i} x = (x_1, \cdots, x_{i - 1}, -x_i, x_{i + 1}, \ldots, x_n)$, making the reflection on $\mathbb{R}^n$ by changing the sign of the $i$-th coordinate;
-  \item $s_{e_i + e_j} x = (x_1, \cdots, x_{i - 1}, -x_j, x_{i + 1}, \ldots, x_{j - 1}, -x_{i}, x_{j + 1}, \ldots, x_n)$, making the reflection on $\mathbb{R}^n$ by swapping the $i$-th and $j$-th coordinates and changing the signs of both coordinates;
-\end{itemize}
-We can choose the first two reflections to generate the whole Weyl group.
+$\dim(\mathfrak{g}) = 6$, and $\mathfrak{g}$ is self-dual.
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.35\textwidth]{figure/p1_2/wd_A3_0-1-0.pdf}
+\end{figure}
 
 \paragraph{(3)}
-Choose the simple roots of $B_n$:
-\begin{equation*}
-  \beta_1 = e_1 - e_2, \beta_2 = e_2 - e_3, \ldots, \beta_{n - 1} = e_{n - 1} - e_n, \beta_n = e_n,
-\end{equation*}
-while the coroots are
-\begin{equation*}
-  H_{\beta_1} = e_1 - e_2 = \alpha_1, H_{\beta_2} = e_2 - e_3 = \alpha_2, \ldots, H_{\beta_n} = 2e_n = 2\alpha_n.
-\end{equation*}
-WE find the corresponding Weyl group are the same as $C_n$, where $s_{e_i} = s_{2e_i}$, so the only thing left to check is
-\begin{equation*}
-  \phi(s_{\alpha} \cdot e_i) = s_{\phi \alpha} \cdot (\phi e_i).
-\end{equation*}
-Define the linear transformation $\phi: \beta_i \rightarrow \alpha_i$, then under the Weyl group action $s_{\alpha} \cdot e_i = \pm e_i$ or $0$.
-Thus
-\begin{equation*}
-  \phi(s_{\alpha} \cdot e_i) = \left\{
-    \begin{aligned}
-      \phi e_i &= 2e_i \\
-      \phi (-e_i) &= -2e_i \\
-      \phi 0 &= 0
-    \end{aligned}
-  \right\} = s_{\phi \alpha} \cdot (\phi e_i).
-\end{equation*}
+$\dim(\mathfrak{g}) = 15$, and $\mathfrak{g}$ is self-dual.
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.35\textwidth]{figure/p1_3/wd_A3_1-0-1.pdf}
+\end{figure}
 
+\newpage
 \paragraph{(4)}
-Symmetrically, the extra white node must be $\alpha_0 = -2e_1$ and it is easy to verify the connectivity of the extended Dynkin diagram.
-Thus apparently it is a non-simple root of $C_n$.
+$\dim(\mathfrak{g}) = 14$, and $\mathfrak{g}$ is self-dual.
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.35\textwidth]{figure/p1_4/wd_B2_2-0.pdf}
+\end{figure}
 
-\subsubsection*{Problem 2:}
-The Chevalley basis of $\mathfrak{sl}(3, \mathbb{C})$ is
-\begin{gather*}
-  H_{\alpha_1} = \alpha_1 = E_{11} - E_{22}, H_{\alpha_2} = \alpha_2 = E_{22} - E_{33}, \\
-  E_{\alpha_1} = E_{12}, E_{\alpha_2} = E_{23}, E_{\alpha_1 + \alpha_2} = E_{13}, \\
-  E_{-\alpha_1} = E_{21}, E_{-\alpha_2} = E_{32}, E_{-(\alpha_1 + \alpha_2)} = E_{31}.
-\end{gather*}
-It is easy to verify the Lie brackets of the Chevalley basis.
+\paragraph{(5)}
+$\dim(\mathfrak{g}) = 6$, and $\mathfrak{g}$ is non-self-dual.
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.35\textwidth]{figure/p1_5/wd_A2-A1_1-0-1.pdf}
+\end{figure}
 
-\subsubsection*{Problem 3:}
+\paragraph{Problem 2:}
+\begin{proof}
+  Under the adjoint representation we can represent $\alpha_1$ as $(2, -1)$ and $\alpha_2$ as $(-1, 2)$, while with the Chevalley basis we have $\pi(X_{-\alpha_1}) = E_{-\alpha_1} = E_{21}$ and $\pi(X_{-\alpha_2}) = E_{-\alpha_2} = E_{32}$.
+  Then the highest weight $\mu = (1, 1) = \alpha_1 + \alpha_2$, so the corresponding weight vector is $\comm{E_{\alpha_1}}{E_{\alpha_2}} = E_{13}$ and the multiplicity is 1.
+  Acting $\pi(X_{-\alpha_1})$ and $\pi(X_{-\alpha_2})$ on $E_{13}$ we get the weight vectors $E_{23}$ of the weight $(-1, 2)$ which is $\alpha_2$, and $-E_{12}$ of the weight $(2, -1)$ which is $\alpha_1$.
+  This is evident since we have the property of the Chevalley basis that $\comm{E_{\beta}}{E_{\gamma}} = N_{\beta \gamma} E_{\beta + \gamma}$.
+  Thus both the two weights $\alpha_1$ and $\alpha_2$ have multiplicity 1.
+
+  Next act $\pi(X_{-\alpha_1})$ on $-E_{12}$ and act $\pi(X_{-\alpha_2})$ on $E_{23}$, which both give the weight vector of $(0, 0)$.
+  This gives two linearly independent weight vectors of $(0, 0)$: $E_{11} - E_{22} = H_{\alpha_1}$ and $E_{33} - E_{22} = -H_{\alpha_2}$.
+  Hence we find the multiplicity of the weight $(0, 0)$ is 2.
+
+  Continuously acting $\pi(X_{-\alpha_i})$ we can find the weight vectors of weights $(-2, 1) = -\alpha_1$, $(1, -2) = -\alpha_2$ and $(-1, -1) = -\alpha_1 - \alpha_2$.
+  These are the opposites of the first three weights, and they also have multiplicity 1.
+  Thus we have found the multiplicity of each weight which is exactly the dimension of each weight space.
+\end{proof}
+
+\paragraph{Problem 3:}
 \paragraph{(1)}
-First consider simple Lie algebra $\mathfrak{g}$ with $\rank{\mathfrak{g}} = 3$:
-\begin{itemize}
-  \item $A_3$: \dynkin{A}{3};
-  \item $B_3$: \dynkin{B}{3};
-  \item $C_3$: \dynkin{C}{3};
-  \item $D_3$: \dynkin{D}{3} $\cong A_3$;
-\end{itemize}
-So non-isomorphic rank-3 simple Lie algebras are $A_3$, $B_3$ and $C_3$.
-Similarly we find non-isomorphic rank-2 simple Lie algebras $A_2$, $B_2$ and $G_2$, and non-isomorphic rank-1 simple Lie algebra $A_1$.
-Then we can construct semi-simple Lie algebra uding direct sum:
-\begin{itemize}
-  \item $A_2 \oplus A_1$;
-  \item $B_2 \oplus A_1$;
-  \item $G_2 \oplus A_1$;
-  \item $A_1 \oplus A_1 \oplus A_1$.
-\end{itemize}
-
-\paragraph{(2)}
-The dimension of the semi-simple Lie algebra is the sum of the numbers of roots and the rank, so we have
-\begin{itemize}
-  \item $\dim(A_3) = 15$
-  \item $\dim(B_3) = 21$
-  \item $\dim(C_3) = 21$
-  \item $\dim(A_2 \oplus A_1) = 11$;
-  \item $\dim(B_2 \oplus A_1) = 13$;
-  \item $\dim(G_2 \oplus A_1) = 17$;
-  \item $\dim(A_1 \oplus A_1 \oplus A_1) = 9$.
-\end{itemize}
-
-\subsubsection*{Problem 4:}
-\begin{enumerate}[label=(\arabic*)]
-  \item no. $\mathfrak{su}(10) \cong A_9$ and $\rank(A_9) > \rank(E_8)$;
-  \item yes. $\mathfrak{so}(10) \cong D_5$: \dynkin{D}{5} $\Rightarrow D_5 \oplus \mathfrak{u}(1) \subset E_6$: \dynkin{E}{6};
-  \item no. $\mathfrak{so}(12) \cong D_6$: \dynkin{D}{6}, $\hat{E}_6$: \dynkin[extended]{E}{6};
-  \item no. $\dim(F_4) = 52 > \dim(A_6) = 48$;
-  \item yes. $\mathfrak{so}(16) \cong D_8$: \dynkin{D}{8}, $\hat{E}_8$: \dynkin[extended]{E}{8}, just delete the first left node;
-  \item yes. $\mathfrak{su}(4) \cong A_3$, $\mathfrak{su}(2) \cong A_1$, $\mathfrak{so}(10) \cong D_5$, $\hat{D}_5$: \dynkin[extended]{D}{5}, just delete one of the middle nodes to get $A_3 \oplus A_1 \oplus A_1$;
-  \item no. $\mathfrak{su}(4) \cong A_3$, $\mathfrak{su}(3) \cong A_2$, $\mathfrak{so}(10) \cong D_5$, $\hat{D}_5$: \dynkin[extended]{D}{5}, we can't obtain $A_3 \oplus A_2$ by deleting one node in $\hat{D}_5$;
-  \item yes. $C_3$: \dynkin{C}{3} is apparently a subdiagram of $F_4$: \dynkin{F}{4}.
-  \item yes. Just delete one node in both $A_3$ and $A_4$ and we can get $A_3$ and $A_2$, together with $\mathfrak{u}(1)^{\oplus 2}$ form a subalgebra of $A_3 \oplus A_4$.
-\end{enumerate}
-
-\subsubsection*{Problem 5:}
-\paragraph{(1)}
-The generators of $\mathfrak{so}(4)$ are $\{J^{(4)}_{ij} = E_{ij} - E_{ji} \mid 1 \leq i < j \leq 4\}$, while the generators of $\mathfrak{so}(5)$ are $\{J^{(5)}_{ij} = E_{ij} - E_{ji} \mid 1 \leq i < j \leq 5\}$.
-Thus we can form $\tilde{J}^{(5)}_{ij} = \mqty{J^{(4)}_{ij} & 0 \\ 0 & 0}$, which are the generators of $\mathfrak{so}(5)$ and also forms a closed vector space.
-So $\mathfrak{so}(4)$ is a subalgebra of $\mathfrak{so}(5)$.
-
-\paragraph{(2)}
-Consider the Cartan subalgebra of $\mathfrak{so}(4)$ as the $2\times 2$ block-diagonal matrices.
-If we identify $\mathfrak{h}$ with $\mathbb{C}^2$ by means of the map
+For $B_2$, the positive roots are
 \begin{equation*}
-  H \mapsto \mathrm{i} (a_1, a_2),
+  \alpha_1, \alpha_2, \alpha_1 + \alpha_2, \alpha_1 + 2\alpha_2.
 \end{equation*}
-then the roots are $\pm e_1 \pm e_2$, so we can write the root system as $\{\pm \alpha_1, \pm \alpha_2\}$.
-This can also be derived from $\mathfrak{so}(4) \cong D_2 \cong A_1 \oplus A_1$.
+Thus we have
+\begin{equation*}
+  \delta = \frac{3}{2} \alpha_1 + 2\alpha_2.
+\end{equation*}
+For a general highest weight rep. with the highest weight $\mu = (m_1, m_2)$, we can compute
+\begin{flalign*}
+  &\innerproduct{\alpha_1}{\mu + \delta} = m_1 + 1,\quad \innerproduct{\alpha_1}{\delta} = 1, \\
+  &\innerproduct{\alpha_2}{\mu + \delta} = \frac{1}{2} (m_2 + 1),\quad \innerproduct{\alpha_2}{\delta} = \frac{1}{2}, \\
+  &\innerproduct{\alpha_1 + \alpha_2}{\mu + \delta} = \frac{1}{2} (2m_1 + m_2 + 1),\quad \innerproduct{\alpha_1 + \alpha_2}{\delta} = \frac{3}{2}, \\
+  &\innerproduct{\alpha_1 + 2\alpha_2}{\mu + \delta} = m_1 + m_2 + 1,\quad \innerproduct{\alpha_1 + 2\alpha_2}{\delta} = 2.
+\end{flalign*}
+Hence,
+\begin{equation*}
+  \dim(\pi_{\mu}) = \frac{1}{6} (m_1 + 1)(m_2 + 1)(m_1 + m_2 + 1)(2m_1 + m_2 + 3).
+\end{equation*}
 
-For $\mathfrak{so}(5) \cong B_2$, the root system is $\{\pm e_1, \pm e_2, \pm e_1 \pm e_2\}$.
+\paragraph{(2)}
+For $G_2$, the positive roots are
+\begin{equation*}
+  \alpha_1, \alpha_2, \alpha_1 + \alpha_2, \alpha_1 + 2\alpha_2, \alpha_1 + 3\alpha_2, 2\alpha_1 + 3\alpha_2.
+\end{equation*}
+Thus we have
+\begin{equation*}
+  \delta = 3\alpha_1 + 5\alpha_2.
+\end{equation*}
+or a general highest weight rep. with the highest weight $\mu = (m_1, m_2)$, we can compute
+\begin{flalign*}
+  &\innerproduct{\alpha_1}{\mu + \delta} = \frac{3}{2} (m_1 + 1),\quad \innerproduct{\alpha_1}{\delta} = \frac{3}{2}, \\
+  &\innerproduct{\alpha_2}{\mu + \delta} = \frac{1}{2} (m_2 + 1),\quad \innerproduct{\alpha_2}{\delta} = \frac{1}{2}, \\
+  &\innerproduct{\alpha_1 + \alpha_2}{\mu + \delta} = \frac{1}{2} (3m_1 + m_2 + 4),\quad \innerproduct{\alpha_1 + \alpha_2}{\delta} = 2, \\
+  &\innerproduct{\alpha_1 + 2\alpha_2}{\mu + \delta} = \frac{1}{2} (3m_1 + 2m_2 + 5),\quad \innerproduct{\alpha_1 + 2\alpha_2}{\delta} = \frac{5}{2}, \\
+  &\innerproduct{\alpha_1 + 3\alpha_2}{\mu + \delta} = \frac{1}{2} (3m_1 + 3m_2 + 6),\quad \innerproduct{\alpha_1 + 3\alpha_2}{\delta} = 3, \\
+  &\innerproduct{2\alpha_1 + 3\alpha_2}{\mu + \delta} = \frac{1}{2} (6m_1 + 3m_2 + 9),\quad \innerproduct{2\alpha_1 + 3\alpha_2}{\delta} = \frac{9}{2}.
+\end{flalign*}
+Hence,
+\begin{equation*}
+  \dim(\pi_{\mu}) = \frac{1}{120} (m_1 + 1)(m_2 + 1)(m_1 + m_2 + 2)(2m_1 + m_2 + 3)(3m_1 + m_2 + 4)(3m_1 + 2m_2 + 5).
+\end{equation*}
+
+\paragraph{Problem 4:}
+\paragraph{(1)}
+Here we give the weight diagram of $\boldsymbol{3}$ and $\boldsymbol{6}$.
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figure/p4_1/wd_3-6.pdf}
+\end{figure}
+\newline
+The weight of $\boldsymbol{3} \otimes \boldsymbol{6}$ is the sum of the weights above, with the highest weight $(3, 0)$ and the lowest weight $(0, -3)$.
+All the other weights have multiplicity 2 except $(0, 0)$ which has multiplicity 3.
+Hence we can get the decomposition
+\begin{equation*}
+  \boldsymbol{3} \otimes \boldsymbol{6} = \boldsymbol{10} \oplus \boldsymbol{8}.
+\end{equation*}
+
+\paragraph{(2)}
+The direct product can be rewritten as
+\begin{equation*}
+  (\boldsymbol{3}, \boldsymbol{2}) \otimes (\bar{\boldsymbol{3}}, \boldsymbol{1}) \otimes (\bar{\boldsymbol{1}}, \boldsymbol{2}) = (\boldsymbol{3} \otimes \bar{\boldsymbol{3}} \otimes \boldsymbol{1}, \boldsymbol{2} \otimes \boldsymbol{1} \otimes \boldsymbol{2}).
+\end{equation*}
+We have the decompositions $\boldsymbol{3} \otimes \bar{\boldsymbol{3}} = \boldsymbol{8} \oplus \boldsymbol{1}$ and $\boldsymbol{2} \otimes \boldsymbol{2} = \boldsymbol{3} \oplus \boldsymbol{1}$, so we can further decompose the above tensor product as
+\begin{equation*}
+  (\boldsymbol{3}, \boldsymbol{2}) \otimes (\bar{\boldsymbol{3}}, \boldsymbol{1}) \otimes (\bar{\boldsymbol{1}}, \boldsymbol{2}) = (\boldsymbol{8} \oplus \boldsymbol{1}, \boldsymbol{3} \oplus \boldsymbol{1}) = (\boldsymbol{8}, \boldsymbol{3}) \oplus (\boldsymbol{8}, \boldsymbol{1}) \oplus (\boldsymbol{1}, \boldsymbol{3}) \oplus (\boldsymbol{1}, \boldsymbol{1}).
+\end{equation*}
 
 \paragraph{(3)}
-$\pm e_1 \pm e_2$ are the long roots of $B_2$, and the correspondance ensures the closure of the root system.
+The weight diagram of the representation $\pi_1 = \pi_2 = \boldsymbol{4}$ with the highest weight $(0, 1)$ is showed in the left of the figure below,
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.4\textwidth]{figure/p4_3/wd_4-10.pdf}
+\end{figure}
+and all the weights of $\boldsymbol{4} \otimes \boldsymbol{4}$ is showed in the right.
+From the subscripts we can find the multiplicity of each weight, with $1 + 1$ means the weight appears in both the first two irreps. in the decomposition, only one number means it only appears in the frist irrep.
+Then the right figure gives the decomposition
+\begin{equation*}
+  \boldsymbol{4} \otimes \boldsymbol{4} = \boldsymbol{10} \oplus \boldsymbol{5} \oplus \boldsymbol{1}.
+\end{equation*}
+
+\paragraph{Problem 5:}
+\paragraph{(1)}
+First we can define a tensor by contracting one of the symmetric indices with the third index:
+\begin{equation*}
+  M^{ijk} = \epsilon^{ik} \epsilon_{lm} T^{(jl)m} + \epsilon^{jk} \epsilon_{lm} T^{(il)m}
+\end{equation*}
+which remains symmetric in $i$ and $j$.
+We can compute each component of $M^{ijk}$
+\begin{equation*}
+  M^{111} = 0, \quad M^{222} = 0, \quad M^{112} = -M^{211} = T^{(11)2} - T^{(12)1}, \quad M^{122} = -M^{221} = T^{(12)2} - T^{(22)1},
+\end{equation*}
+so it describes a 2-diemnsional invariant subspace.
+
+Thus we can divide $T^{(ij)k}$ into two parts:
+\begin{equation*}
+  T^{(ij)k} = (T^{(ij)k} - xM^{ijk}) + xM^{ijk},
+\end{equation*}
+the first part with components
+\begin{align*}
+  &S^{111} = T^{(11)1},\quad S^{222} = T^{(22)2}, \\
+  &S^{112} = (1 - x) T^{(11)2} + x T^{(12)1}, \quad S^{211} = (1 - x) T^{(12)1} + xT^{(11)2}, \\
+  &S^{122} = (1 - x) T^{(12)2} + x T^{(22)1}, \quad S^{211} = (1 - x) T^{(22)1} + xT^{(12)2}.
+\end{align*}
+Choosing $x = \frac{1}{3}$, we can write the components as
+\begin{equation*}
+  S^{(ijk)} = \frac{1}{3} (T^{(ij)k} + T^{(jk)i} + T^{(ki)j}),
+\end{equation*}
+which is totally symmetric in $i, j, k$, forming a 4-dimensional invariant subspace.
+Hence we can write the decomposition
+\begin{equation*}
+  \boldsymbol{3} \otimes \boldsymbol{2} = \boldsymbol{4} \oplus \boldsymbol{2}.
+\end{equation*}
+
+\paragraph{Problem 6:}
+\paragraph{(1)}
+The weight diagram of $\boldsymbol{15}$ of $\mathfrak{su}(4)$ is showed in Problem 1(3), and only considering the first two coordinates we can divide the daigram into four parts:
+upper-left three weights is the rep. $\boldsymbol{3}$ of $\mathfrak{su}(3)$, lower-right three is the rep. $\bar{\boldsymbol{3}}$ of $\mathfrak{su}(3)$, the other forms the rep. $\boldsymbol{8}$ and the rest $(0, 0)$ is the trivial rep. of $\mathfrak{su}(3)$.
+Hence we can write the decomposition
+\begin{equation*}
+  \boldsymbol{15} = \boldsymbol{8} \oplus \boldsymbol{3} \oplus \bar{\boldsymbol{3}} \oplus \boldsymbol{1}.
+\end{equation*}
+The generator of $\mathfrak{u}(1)$ can be chosen as $Q = H_{\alpha_1} + 2H_{\alpha_2} + 3H_{\alpha_3}$, so the final branching rule is then
+\begin{equation*}
+  \boldsymbol{15} \rightarrow \boldsymbol{8}_{0} \oplus \boldsymbol{3}_{4} \oplus \bar{\boldsymbol{3}}_{-4} \oplus \boldsymbol{1}_{0}.
+\end{equation*}
+
+\paragraph{(2)}
+The weight diagram of $\boldsymbol{6}$ of $\mathfrak{su}(4)$ is showed in Problem 1(2).
+Ignoring the middle coordinate we can find the upper one and the lower one are both trivial reps. of $\mathfrak{su}(2)$, while the middle four form the rep. $(\boldsymbol{2}, \boldsymbol{2})$ of $\mathfrak{su}(2)$.
+Hence the decomposition
+\begin{equation*}
+  \boldsymbol{6} = (\boldsymbol{2}, \boldsymbol{2}) \oplus (\boldsymbol{1}, \boldsymbol{1}) \oplus (\boldsymbol{1}, \boldsymbol{1}).
+\end{equation*}
+The generator of $\mathfrak{u}(1)$ can be chosen as $Q = H_{\alpha_1} + 2H_{\alpha_2} + H_{\alpha_3}$, so the final branching rule is
+\begin{equation*}
+  \boldsymbol{6} \rightarrow (\boldsymbol{2}, \boldsymbol{2})_{0} \oplus (\boldsymbol{1}, \boldsymbol{1})_{2} \oplus (\boldsymbol{1}, \boldsymbol{1})_{-2}.
+\end{equation*}
+
+\paragraph{(3)}
+For the fundamental rep. $\boldsymbol{5}$ of $\mathfrak{su}(5)$, its weights are
+\begin{equation*}
+  (1, 0, 0, 0) \quad (-1, 1, 0, 0),\quad (0, -1, 1, 0),\quad (0, 0, -1, 1),\quad (0, 0, 0, -1).
+\end{equation*}
+only consider the second and the fourth cooredinates we can write the decomposition
+\begin{equation*}
+  \boldsymbol{5} = (\boldsymbol{1}, \boldsymbol{1}) \oplus (\boldsymbol{2}, \boldsymbol{1}) \oplus (\boldsymbol{1}, \boldsymbol{2}).
+\end{equation*}
+The generators can be chosen as $Q_1 = H_{\alpha_2} + 2H_{\alpha_3} + H_{\alpha_4}$ and $Q_2 = 4H_{\alpha_1} + 3H_{\alpha_2} + 2H_{\alpha_3} + H_{\alpha_4}$, and the final branching rule is then
+\begin{equation*}
+  \boldsymbol{5} \rightarrow (\boldsymbol{1}, \boldsymbol{1})_{(0, 4)} \oplus (\boldsymbol{2}, \boldsymbol{1})_{1, -1} \oplus (\boldsymbol{1}, \boldsymbol{2})_{(-1, -1)}.
+\end{equation*}
 
 \end{document}

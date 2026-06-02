@@ -1,0 +1,60 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usetikzlibrary{positioning,arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    >=Stealth,
+    every node/.style={font=\Large},
+    node distance=2.3cm
+]
+
+\node (a) at (3,0) {$(2, 0)_1$};
+
+\node (b) at (1.5,-2.0) {$(0, 2)_1$};
+
+\node (c1) at (0,-4.0) {$(-2, 4)_1$};
+\node (c2) at (3,-4.0) {$(1, 0)_1$};
+
+\node (d1) at (1.5,-6.0) {$(-1, 2)_1$};
+\node (d2) at (4.5,-6.0) {$(2, -2)_1$};
+
+\node (e) at (3,-8.0) {$(0, 0)_2$};
+
+\node (f1) at (1.5,-10.0) {$(-2, 2)_1$};
+\node (f2) at (4.5,-10.0) {$(1, -2)_1$};
+
+\node (g1) at (3,-12.0) {$(-1, 0)_1$};
+\node (g2) at (6,-12.0) {$(2, -4)_1$};
+
+\node (h) at (4.5,-14.0) {$(0, -2)_1$};
+
+\node (i) at (3,-16.0) {$(-2, 0)_1$};
+
+\draw[->] (a) -- (b);
+
+\draw[->] (b) -- (c1);
+\draw[->] (b) -- (c2);
+
+\draw[->] (c1) -- (d1);
+\draw[->] (c2) -- (d1);
+\draw[->] (c2) -- (d2);
+
+\draw[->] (d1) -- (e);
+\draw[->] (d2) -- (e);
+
+\draw[->] (e) -- (f1);
+\draw[->] (e) -- (f2);
+
+\draw[->] (f1) -- (g1);
+\draw[->] (f2) -- (g1);
+\draw[->] (f2) -- (g2);
+
+\draw[->] (g1) -- (h);
+\draw[->] (g2) -- (h);
+
+\draw[->] (h) -- (i);
+
+\end{tikzpicture}
+
+\end{document}

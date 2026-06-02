@@ -1,0 +1,45 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usetikzlibrary{positioning,arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    >=Stealth,
+    every node/.style={font=\Large},
+    node distance=2.3cm
+]
+
+\node (A) at (1.5,0) {$(1, 0)_1$};
+
+\node (B) at (0,-2.0) {$(-1, 1)_1$};
+
+\node (C) at (1.5,-4,0) {$(0, -1)_1$};
+
+\node (a) at (7.5,0) {$(2, 0)_1$};
+
+\node (b) at (6,-2.0) {$(0, 1)_1$};
+
+\node (c1) at (4.5,-4,0) {$(-2, 2)_1$};
+\node (c2) at (7.5,-4.0) {$(1, -1)_1$};
+
+\node (d) at (6,-6.0) {$(-1, 0)_1$};
+
+\node (e) at (7.5,-8.0) {$(0, -2)_1$};
+
+\draw[->] (A) -- (B);
+
+\draw[->] (B) -- (C);
+
+\draw[->] (a) -- (b);
+
+\draw[->] (b) -- (c1);
+\draw[->] (b) -- (c2);
+
+\draw[->] (c1) -- (d);
+\draw[->] (c2) -- (d);
+
+\draw[->] (d) -- (e);
+
+\end{tikzpicture}
+
+\end{document}
