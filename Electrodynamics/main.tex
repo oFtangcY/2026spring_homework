@@ -106,6 +106,72 @@
   \vb{S} = \frac{1}{2\mu_0} \Re(\vb{E}^{*} \times \vb{B}) = \frac{\mu_0 \omega^4 e^2 a^2}{32\pi^2 cR^2} (1 + \cos^2 \theta) \vb{e}_R.
 \end{equation*}
 
-\paragraph{8-1. }
+\paragraph{8-1. 运动的电偶极子.}
+\paragraph{(1)}
+直接计算系统的电偶极矩和磁偶极矩得到
+\begin{align*}
+  p'_i = \int \dd[3]{\vb{x}'} x'_i \rho'(\vb{x}') &= -\int \dd[3]{\vb{x}'} x'_i (\nabla' \cdot \vb{p}) \delta^3(\vb{x}') \\
+  &= \int \dd[3]{\vb{x}'} x'_i [\delta^3(\vb{x}') \nabla' \cdot \vb{p} - \nabla' \cdot (\vb{p} \delta^3(\vb{x}'))] \\
+  &= \eval{-x'_i \vb{p} \delta^3(\vb{x}')}_{\Sigma} + \int \dd[3]{\vb{x}'} (\nabla' x'_i) \cdot \vb{p} \delta^3(\vb{x}') \\
+  &= \int \dd[3]{\vb{x}'} p_i \delta^3(\vb{x}') = p_i,
+\end{align*}
+\begin{equation*}
+  \vb{m}' = \frac{1}{2} \int \dd[3]{\vb{x}'} [\vb{x}' \times \vb{J}'(\vb{x}')] = 0,
+\end{equation*}
+即 $K'$ 系中的电偶极矩为 $\vb{p}$，磁偶极矩为 0.
+
+\paragraph{(2)}
+K' 系中电偶极矩四矢量可以表示为 $P'^{\mu} = (P'^0, \vb{P}') = (0, \vb{p})$, K 系相对 K' 系以 $-\vb*{\beta}$ 运动，应用书 (6.8) 式可以得到
+\begin{equation*}
+  P^0 = \gamma (P'^0 + \vb*{\beta} \cdot \vb{P}') = \gamma \vb*{\beta} \cdot \vb{p}, \quad \vb{P} = \vb{P}' + \frac{\gamma - 1}{\vb*{\beta}^2} (\vb*{\beta} \cdot \vb{P}')\vb*{\beta} + \gamma \vb*{\beta} P'^0 = \vb{p} + \frac{\gamma - 1}{\vb*{\beta}^2} (\vb*{\beta} \cdot \vb{p}) \vb*{\beta}.
+\end{equation*}
+故 K 系中电偶极矩四矢量为 $P^{\mu} = (\gamma \vb*{\beta} \cdot \vb{p}, \vb{p} + \frac{\gamma - 1}{\vb*{\beta}^2} (\vb*{\beta} \cdot \vb{p}) \vb*{\beta})$.
+另外， K 系中四速度为 $u_{\mu} = \gamma(1, -\vb*{\beta})$, 二者内积为
+\begin{equation*}
+  P \cdot u = P^{\mu} u_{\mu} = \gamma[\gamma \vb*{\beta} \cdot \vb{p} - \vb*{\beta} \cdot \vb{p} - (\gamma - 1) \vb*{\beta} \cdot \vb{p}] = 0,
+\end{equation*}
+即在任意 K 系中 $P^{\mu}$ 均与四速度正交.
+
+\paragraph{(3)}
+在静止系 K' 中，积分表达式可写为
+\begin{equation*}
+  J'^{\mu}(x) = -\int \dd{\tau} (1, 0) (\vb{p} \cdot \nabla') \delta(t' - \tau) \delta^3(\vb{x}') = (-(\vb{p} \cdot \nabla') \delta^3(\vb{x}'), 0) 
+\end{equation*}
+对比各项表达式即得到该协变表达式的确给出 (1) 中结果.
+
+\paragraph{(4)}
+由书 (8.8) 式，代入 $J^{\mu}(x')$ 的协变表达式得到
+\begin{equation*}
+  A^{\mu}(x) = \int \dd[4]{x'} D^{(+)}(x - x') J^{\mu}(x') = -4\pi \int \dd{\tau} u^{\mu}(\tau) \int \dd[4]{x'} D^{(+)}(x - x') (P \cdot \partial') \delta^4[x' - r(\tau)].
+\end{equation*}
+对关于 $x'$ 的项分部积分，边界项消失
+\begin{equation*}
+  \int \dd[4]{x'} D^{(+)}(x - x') \partial'_{\nu} \delta^4[x' - r(\tau)] = -\int \dd[4]{x'} \delta^4[x' - r(\tau)] \partial'_{\nu} D^{(+)}(x - x'),
+\end{equation*}
+注意到 $\partial'_{\nu} D^{(+)}(x - x') = - \partial_{\nu} D^{(+)}(x - x')$，因此我们得到
+\begin{equation*}
+  \int \dd[4]{x'} D^{(+)}(x - x') (P \cdot \partial') \delta^4[x' - r(\tau)] = (P \cdot \partial) \int \dd[4]{x'} \delta^4[x' - r(\tau)] D^{+}(x - x') = (P \cdot \partial) D^{(+)}[x - r(\tau)].
+\end{equation*}
+带回 $A^{\mu}$ 表达式
+\begin{equation*}
+  A^{\mu}(x) = -4\pi \int \dd{\tau} u^{\mu}(\tau) (P \cdot \partial) D^{(+)}[x - r(\tau)].
+\end{equation*}
+进而我们可以代入 $D^{(+)}[x - r(\tau)]$ 的具体形式
+\begin{equation*}
+  A^{\mu}(x) = -2 \int \dd[4]{\tau} u^{\mu}(\tau) \theta(x_0 - x'_0) (P \cdot \partial) \delta[(x - r(\tau))^2].
+\end{equation*}
+应用题中所给公式
+\begin{equation*}
+  \partial^{\nu} \delta[(x - r(\tau))^2] = \partial^{\nu} (x - r(\tau))^2 \dv{\tau}{(x - r(\tau))^2} \dv{\tau} \delta[(x - r(\tau))^2] = -\frac{(x - r(\tau))}{(x - r(\tau)) \cdot u} \dv{\tau} \delta[(x - r(\tau))^2],
+\end{equation*}
+带回前一个表达式得到
+\begin{equation*}
+  A^{\mu}(x) = 2 \int \dd[4]{\tau} u^{\mu}(\tau) \theta(x_0 - x'_0) \frac{(x - r(\tau)) \cdot P}{(x - r(\tau)) \cdot u} \dv{\tau} \delta[(x - r(\tau))^2],
+\end{equation*}
+再作分部积分并运用 delta 函数性质得到最终表达式
+\begin{equation*}
+  A^{\mu}(x) = -\int \dd{\tau} \delta[(x - r(\tau))^2] \theta(x_0 - r_0) \dv{\tau}\left[\frac{u^{\mu} \cdot (P \cdot (x - r))}{u \cdot (x - r)}\right] = -\frac{1}{u \cdot R} \dv{\tau} \left[\frac{u^{\mu (P \cdot R)}}{u \cdot R}\right]_{\mathrm{ret}},
+\end{equation*}
+其中 $R^{\mu} = x^{\mu} - r^{\mu}(\tau)$ 为场点到源点的相对坐标四矢量. 
 
 \end{document}
