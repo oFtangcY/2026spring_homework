@@ -1,12 +1,12 @@
 # Fdb version 4
-["xdvipdfmx"] 1780408317.15587 "main.xdv" "main.pdf" "main" 1780408317.36523 0
-  "main.xdv" 1780408317.11206 63728 b452dcabd0be7cf3106ed5c37cebadf3 "xelatex"
+["xdvipdfmx"] 1780492856.32613 "main.xdv" "main.pdf" "main" 1780492856.52259 0
+  "main.xdv" 1780492856.28199 67388 c9c48a7971518732248b3802a71ceab6 "xelatex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["xelatex"] 1780408316.46943 "/Users/lollipop/Documents/work/2026spring_homework/Lie_group/main.tex" "main.xdv" "main" 1780408317.364 0
+["xelatex"] 1780492855.61093 "/Users/lollipop/Documents/work/2026spring_homework/Lie_group/main.tex" "main.xdv" "main" 1780492856.52137 0
   "/System/Library/Fonts/Menlo.ttc" 1777577597 2156036 ec05dfca6821d85440da0899493002c3 ""
-  "/Users/lollipop/Documents/work/2026spring_homework/Lie_group/main.tex" 1780408315.6348 11761 449ffcd5916561b543cb21b69f85acbf ""
+  "/Users/lollipop/Documents/work/2026spring_homework/Lie_group/main.tex" 1780492855.51637 12639 979810f4e530f28e57c5a5e87f761053 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/tcrm0600.tfm" 1136768653 1536 12e8c510d3e158fdd0e9a42e75118bd9 ""
@@ -227,9 +227,9 @@
   "figure/p1_5/wd_A2-A1_1-0-1.pdf" 1780323773.13485 5064 7c3883a3c34fe08e65ba6e795607b385 ""
   "figure/p4_1/wd_3-6.pdf" 1780388573.04624 5250 a66ab1f7b7230d7789035560ce08d7ba ""
   "figure/p4_3/wd_4-10.pdf" 1780391283.10935 5624 7b0fdc66ac449c930f1f79f81aa6d9e5 ""
-  "main.aux" 1780408317.11159 1846 d4b3088df4cc23f9cb5fb4e102b678ec "xelatex"
-  "main.out" 1780408317.05735 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
-  "main.tex" 1780408315.6348 11761 449ffcd5916561b543cb21b69f85acbf ""
+  "main.aux" 1780492856.28151 1935 99d6d397ab7287fdc20db43eda67b235 "xelatex"
+  "main.out" 1780492856.22016 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
+  "main.tex" 1780492855.51637 12639 979810f4e530f28e57c5a5e87f761053 ""
   "preamble/config.tex" 1780316853.42807 341 f0585101432ce712d2368fba0a5f27e0 ""
   "preamble/macros.tex" 1780385931.09376 184 258820911b056ede289a9f95b3490dd0 ""
   "preamble/packages.tex" 1780391229.72765 426 f7ec9cb5dd026c4ba76b17bd9316162c ""

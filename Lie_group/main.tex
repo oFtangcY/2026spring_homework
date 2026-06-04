@@ -79,12 +79,12 @@ For a general highest weight rep. with the highest weight $\mu = (m_1, m_2)$, we
 \begin{flalign*}
   &\innerproduct{\alpha_1}{\mu + \delta} = m_1 + 1,\quad \innerproduct{\alpha_1}{\delta} = 1, \\
   &\innerproduct{\alpha_2}{\mu + \delta} = \frac{1}{2} (m_2 + 1),\quad \innerproduct{\alpha_2}{\delta} = \frac{1}{2}, \\
-  &\innerproduct{\alpha_1 + \alpha_2}{\mu + \delta} = \frac{1}{2} (2m_1 + m_2 + 1),\quad \innerproduct{\alpha_1 + \alpha_2}{\delta} = \frac{3}{2}, \\
-  &\innerproduct{\alpha_1 + 2\alpha_2}{\mu + \delta} = m_1 + m_2 + 1,\quad \innerproduct{\alpha_1 + 2\alpha_2}{\delta} = 2.
+  &\innerproduct{\alpha_1 + \alpha_2}{\mu + \delta} = \frac{1}{2} (2m_1 + m_2 + 3),\quad \innerproduct{\alpha_1 + \alpha_2}{\delta} = \frac{3}{2}, \\
+  &\innerproduct{\alpha_1 + 2\alpha_2}{\mu + \delta} = m_1 + m_2 + 2,\quad \innerproduct{\alpha_1 + 2\alpha_2}{\delta} = 2.
 \end{flalign*}
 Hence,
 \begin{equation*}
-  \dim(\pi_{\mu}) = \frac{1}{6} (m_1 + 1)(m_2 + 1)(m_1 + m_2 + 1)(2m_1 + m_2 + 3).
+  \dim(\pi_{\mu}) = \frac{1}{6} (m_1 + 1)(m_2 + 1)(m_1 + m_2 + 2)(2m_1 + m_2 + 3).
 \end{equation*}
 
 \paragraph{(2)}
@@ -179,6 +179,31 @@ which is totally symmetric in $i, j, k$, forming a 4-dimensional invariant subsp
 Hence we can write the decomposition
 \begin{equation*}
   \boldsymbol{3} \otimes \boldsymbol{2} = \boldsymbol{4} \oplus \boldsymbol{2}.
+\end{equation*}
+
+\paragraph{(2)}
+$\boldsymbol{3} \otimes \boldsymbol{3}$ can be divided into three parts: the first is total symmetric
+\begin{equation*}
+  S^{(ijkl)} = \frac{1}{3} (T^{(ij)(kl)} + T^{(ik)(jl)} + T^{(il)(jk)})
+\end{equation*}
+which has the dimension of 5; 
+The second anti-symmetric part
+\begin{equation*}
+  A^{((ij)(kl))} = \frac{1}{2} (T^{(ij)(kl)} - T^{(kl)(ij)})
+\end{equation*}
+which can be rewritten as
+\begin{equation*}
+  W^{(mn)} = \epsilon_{ik} A^{(im)(kn)} = \frac{1}{2} \epsilon_{ik} (T^{(im)(kn)} - T^{(kn)(im)})
+\end{equation*}
+and has a dimension of 3;
+the last part is a scalar part
+\begin{equation*}
+  C = \epsilon_{ik} \epsilon_{jl} T^{(ij)(kl)}
+\end{equation*}
+which has a dimension of 1.
+Thus we can write the decomposition
+\begin{equation*}
+  \boldsymbol{3} \otimes \boldsymbol{3} = \boldsymbol{5} \oplus \boldsymbol{3} \oplus \boldsymbol{1}.
 \end{equation*}
 
 \paragraph{Problem 6:}
