@@ -9,114 +9,268 @@
 \maketitle
 
 \paragraph{1.}
-\begin{proof}
-	可以将 $u$ 按 $\{\Phi_k\}$ 展开，得到 $u = \sum_k c_k \Phi_k$，带回 $u$ 满足的偏微分方程即得到
-	\begin{equation*}
-		\sum_k \lambda_k c_k \Phi_k = f \Rightarrow \lambda_k c_k = A_k,
-	\end{equation*}
-	故
-	\begin{equation*}
-		u = \sum_k \frac{A_k}{\lambda_k} \Phi_k. \qedhere
-	\end{equation*}
-\end{proof}
+考虑该边值问题相应的齐次方程
+\begin{equation*}
+	\dv{x}\left[(1 - x^2)\dv{y}{x}\right] = 0,
+\end{equation*}
+该方程存在非零的有界解 $y = C_1$, 故需要构造广义格林函数满足方程
+\begin{align*}
+	&\dv{x}\left[(1 - x^2)\dv{G(x; x')}{x}\right] = -\delta(x - x') + \frac{1}{2} \\
+	&\eval{\abs{G(x; x')}}_{x = \pm 1} < \infty.
+\end{align*}
+直接积分得到
+\begin{equation*}
+	(1 - x^2) \dv{G(x; x')}{x} = -\eta(x - x') + \frac{x + 1}{2},
+\end{equation*}
+再利用 $G(x; x')$ 满足的边界条件再次积分得到
+\begin{equation*}
+	G(x; x') = \begin{cases}
+		-\frac{1}{2} \ln\frac{1 - x}{2} + G(-1; x'), &x < x' \\
+		-\frac{1}{2} \ln\frac{1 + x}{2} + G(1; x'), &x > x'
+ 	\end{cases}
+\end{equation*}
+根据格林函数在 $x = x'$ 处的连续性条件 $\eval{G(x; x')}_{x = x' - 0} = \eval{G(x; x')}_{x = x' + 0}$, 可以选取格林函数的形式为
+\begin{equation*}
+	G(x; x') = \begin{cases}
+		\frac{1}{2} \ln\frac{1 - x'}{1 - x}, &x < x' \\
+		\frac{1}{2} \ln\frac{1 + x'}{1 + x}, &x > x'
+ 	\end{cases}
+\end{equation*}
+进而原方程的解可以表示为
+\begin{equation*}
+	y(x) = \int_{-1}^{1} G(x; x') \phi(x') \dd{x'} + C.
+\end{equation*}
 
 \paragraph{2.}
-对于本题中的方程及齐次条件，可以写出相应的本征值和本征函数为
-\begin{align*}
-	&\lambda_{mn} = \left(\frac{m\pi}{a}\right)^2 + \left(\frac{n\pi}{b}\right)^2 \\
-	&w_{mn}(x, y) = \sin \frac{m\pi x}{a} \cos \frac{n\pi y}{b}
-\end{align*}
-将 $u(x, y)$ 按 $w_{mn}(x, y)$ 展开
+一维 Helmholtz 方程的格林函数满足
 \begin{equation*}
-	u(x, y) = \sum_{m = 1}^{\infty} \sum_{n = 0}^{\infty} c_{mn} \sin \frac{m\pi x}{a} \cos \frac{n\pi y}{b}
+	\left(\dv[2]{x} + k^2\right) G(x; x') = -\delta(x - x'),
 \end{equation*}
-并代入原定解问题的偏微分方程中得到
+不难发现格林函数应当仅与 $x - x'$ 有关，通过合适的坐标变换我们可以令 $G(x, x') = f(\xi)$ 并将上述方程表示为
 \begin{equation*}
-	\left[\left(\frac{m\pi}{a}\right)^2 + \left(\frac{n\pi}{b}\right)^2\right] c_{mn} = \int_{0}^{b} \cos \frac{n\pi y}{b} \dd{y} \int_{0}^{a} \sin \frac{m\pi x}{a} f(x, y) \dd{x}
+	\left(\dv[2]{\xi} + k^2\right) f(\xi) = - \delta(\xi).
 \end{equation*}
-求解该代数方程即得到 $u(x, y)$ 的展开系数.
+相应齐次方程的通解为
+\begin{equation*}
+	f(\xi) = A(k) \mathrm{e}^{-\mathrm{i} k\xi} + B(k) \mathrm{e}^{\mathrm{i} k\xi}.
+\end{equation*}
+取时间因子为 $\mathrm{e}^{-\mathrm{i} \omega t}$，要求在无穷远处只有散射波，则需要分别讨论 $\xi < 0$ 和 $\xi > 0$ 的情形
+\begin{equation*}
+	f(\xi) = \begin{cases}
+		A(k) \mathrm{e}^{-\mathrm{i} k\xi}, &\xi < 0 \\
+		B(k) \mathrm{e}^{\mathrm{i} k\xi}, &\xi > 0
+	\end{cases}
+\end{equation*}
+又根据 $\xi = 0$ 处的连续性条件得到 $A(k) = B(k)$, 因此可以统一写为 $f(\xi) = A(k) \mathrm{e}^{\mathrm{i} k\abs{\xi}}$.
+在 $\xi = 0$ 附近小范围对方程从 $-a$ 到 $a$ 积分
+\begin{equation*}
+	\int_{-a}^{a} \dv[2]{f(\xi)}{\xi} \dd{\xi} + k^2 \int_{-a}^{a} f(\xi) \dd{\xi} = -\int_{-a}^{a} \delta(\xi) \dd{\xi},
+\end{equation*}
+不难直接计算得到 $A(k) = \mathrm{i}/(2k)$, 故一维 Helmholtz 方程的格林函数为
+\begin{equation*}
+	G(x; x') = \frac{\mathrm{i}}{2k} \mathrm{e}^{\mathrm{i} k\abs{x - x'}}.
+\end{equation*}
+
+二维 Helmholtz 方程的格林函数满足
+\begin{equation*}
+	(\laplacian + k^2)G(x; x') = -\delta(x - x') \delta(y - y')
+\end{equation*}
+结合对称性并作合适的坐标变换，可以将其表示为
+\begin{equation*}
+	\frac{1}{\rho} \left[\rho \dv{f(\rho)}{\rho}\right] + k^2 f(\rho) = -\frac{1}{\rho} \delta(\rho - \rho').
+\end{equation*}
+不难看出相应齐次方程为 0 阶 Bessel 方程，通解为 (用 Hankel 函数表示)
+\begin{equation*}
+	f(\rho) = A(k) \hankel{1}{0}(k\rho) + B(k) \hankel{2}{0}(k\rho).
+\end{equation*}
+取时间因子 $\mathrm{e}^{-\mathrm{i} \omega t}$，要求在无穷远处为发散波，应当只保留上述第一项.
+同样在原点附近小面积内积分（取半径为 $a$ 的圆），有
+\begin{equation*}
+	\iint \laplacian{\xi, \eta} f(\rho) \dd{\xi} \dd{\eta} + k^2 \iint f(\rho) \dd{\xi} \dd{\eta} = -1.
+\end{equation*}
+上述第一项
+\begin{equation*}
+	\iint \laplacian{\xi, \eta} f(\rho) \dd{\xi} \dd{\eta} = \int_{0}^{2\pi} \dv{f(\rho)}{\rho} a\dd{\phi} = -2\pi ka A(k) \hankel{1}{1}(ka),
+\end{equation*}
+第二项面积分可以根据 Hankel 函数的性质直接积出
+\begin{equation*}
+	k^2 \iint f(\rho) \dd{\xi} \dd{\eta} = k^2 A(k) \int_{0}^{2\pi} \dd{\phi} \int_{0}^{a} \hankel{1}{0}(k\rho) \rho \dd{\rho} = 2\pi ka A(k) \hankel{1}{1}(ka) - 2\pi A(k) \lim_{z \to 0}[z\hankel{1}{1}(z)].
+\end{equation*}
+边界项相互抵消，运用 hankel 函数在 $z \to 0$ 的渐进展开 $\hankel{1}{1}(z) \to -\frac{\mathrm{i}}{2} \left(\frac{z}{2}\right)^{-1}$ 可以算出极限，最终得到
+\begin{equation*}
+	A(k) = \frac{\mathrm{i}}{4},
+\end{equation*}
+相应二维 Helmholtz 方程的格林函数为
+\begin{equation*}
+	G(\vb*{x}; \vb*{x}') = \frac{\mathrm{i}}{4} \hankel{1}{0}(k\abs{\vb*{x} - \vb*{x}'}).
+\end{equation*}
 
 \paragraph{3.}
-要求积分核为 $\theta$ 对应算符的本征函数，则应当取为 Legendre 函数 $P_l(\cos \theta)$.
-此时 $u$ 的像函数为
+考虑对称性，选取合适的坐标系我们可以将方程写为
 \begin{equation*}
-	U_l(r, \phi) = \int_{0}^{\pi} u(r, \theta, \phi) P_l(\cos\theta) \sin \theta \dd{\theta},
+	\frac{1}{\rho} \dv{\rho}\left[\rho \dv{g(\rho)}{\rho}\right] = -\frac{4\pi}{\rho} \delta(\rho),
 \end{equation*}
-满足定解问题
-\begin{align*}
-	&\dv{r}(r^2 \dv{U_l}{r}) - l(l + 1) U_l(r) = 0 \\
-	&U_l(1) = \int_{-1}^{1} f(x) P_l(x) \dd{x}
-\end{align*}
-一般不能对球内的 $r$ 进行积分变换，积分区间不符同时也仅有边界条件 $r = 1$ 处的 Dirichlet 边界条件，在 $r = 0$ 处仅有有界性条件.
+相应齐次方程的通解为 $g(r) = c_1 \ln r + c_2$.
+对 Poisson 方程在原点附近积分，不难得到其特解为
+\begin{equation*}
+	g'(x, y; x', y') = -2\ln\sqrt{(x - x')^2 + (y - y')^2},
+\end{equation*}
+那么原方程通解为
+\begin{equation*}
+	G(x, y; x', y') = -2\ln\sqrt{(x - x')^2 + (y - y')^2} + c_1 \ln\sqrt{x^2 + y^2} + c_2.
+\end{equation*}
 
 \paragraph{4.}
-可以将题述问题写为
+相应的无界空间二维波动方程的格林函数满足
+\begin{align*}
+	&\left(\pdv[2]{t} - a^2 \laplacian\right) G(\vb*{x}, t; \vb*{x}_0, t_0) = \delta(x - x_0) \delta(y - y_0) \delta(t - t_0), \quad -\infty < x, y < \infty, t, t_0 > 0, \\
+	&G(\vb*{x}, 0; \vb*{x}_0, t_0) = 0, \quad \pdv{G}{t}(\vb*{x}, 0; \vb*{x}_0, t_0) = 0
+\end{align*}
+上述初值问题也可以在三维空间中考虑，非齐次项为 $(x_0, y_0)$ 处的无限长线源.
+不难得到无界空间三维波动方程的格林函数为
 \begin{equation*}
-	\begin{cases}
-		\pdv{u}{t} - \kappa \pdv[2]{u}{x} = 0, \quad -\infty < x < \infty, t > 0 \\
-		\eval{u}_{x \to \pm \infty} < \infty, \quad t > 0 \\
-		\eval{u}_{t = 0} = u_0 H(x), \quad -\infty < x < \infty 
-	\end{cases}
+	G^{(3)}(\vb*{x}, t; \vb*{x}_1, t_1) = \frac{1}{4\pi a\abs{\vb*{x} - \vb*{x}_1}} \delta[\abs{\vb*{x} - \vb*{x_1}} - a(t - t_1)],
 \end{equation*}
-作 Laplace 变换，令
+则在这种意义下相应的二维格林函数为
+\begin{align*}
+	G^{(2)}(\vb*{x}, t; \vb*{x}_0, t_0) &= \int_{0}^{t} \iiint G^{(3)}(\vb*{x}, t; \vb*{x}_1, t_1) \delta(x_1 - x_0) \delta(y_1 - y_0) \delta(t_1 - t_0) \dd[3]{\vb*{x}_0} \dd{t_0} \\
+	&= \begin{aligned}[t]
+	  \int_{0}^{t} \iiint &\frac{1}{4\pi a} \frac{\delta[\sqrt{(x - x_0)^2 + (y - y_0)^2 + (z - z_0)^2} - c(t - t_0)]}{\sqrt{(x - x_0)^2 + (y - y_0)^2 + (z - z_0)^2}} \\
+	  &\times \delta(x_1 - x_0) \delta(y_1 - y_0) \delta(t_1 - t_0) \dd[3]{\vb*{x}_0} \dd{t_0} \\
+	\end{aligned}\\
+	&= \frac{1}{4\pi a} \int_{0}^{t} \delta(t_1 - t_0) \dd{t_0} \int_{-\infty}^{\infty} \dd{z_0} \frac{\delta[\sqrt{(x - x_1)^2 + (y - y_1)^2 + (z - z_0)^2} - c(t - t_0)]}{\sqrt{(x - x_1)^2 + (y - y_1)^2 + (z - z_0)^2}} \\
+	&= \begin{aligned}[t]
+		\frac{1}{4\pi a} \int_{0}^{t} &\delta(t_1 - t_0) \dd{t_0} \int_{-\infty}^{\infty} \dd{z_0} \frac{1}{\sqrt{(x - x_1)^2 + (y - y_1)^2 + (z - z_0)^2}} \\
+		&\times \frac{\sum \delta \left(z_0 - z \pm \sqrt{c^2 (t - t_0)^2 - (x - x_1)^2 - (y - y_1)^2}\right)}{\sqrt{c^2 (t - t_0)^2 - (x - x_1)^2 - (y - y_1)^2} / c\abs{t - t_0}} 
+	\end{aligned} \\
+	&= \frac{1}{2\pi a} \frac{1}{\sqrt{c^2 (t - t_0)^2 - (x - x_1)^2 - (y - y_1)^2}}.
+\end{align*}
+最终得到无界空间二维波动方程格林函数为
 \begin{equation*}
-	u(x, t) \fallingdotseq U(x, p) = \int_{0}^{\infty} u(x, t) \mathrm{e}^{-pt} \dd{t},
-\end{equation*}
-则定解问题化为
-\begin{equation*}
-	pU(x, p) - \kappa \dv[2]{U(x, p)}{x} = u_0 H(x),
-\end{equation*}
-由此得到
-\begin{equation*}
-	U(x, p) = \frac{1}{2} \frac{1}{\sqrt{\kappa p}} \int_{-\infty}^{\infty} u_0 H(x') \exp\left[-\sqrt{\frac{p}{\kappa}} \abs{x - x'}\right] \dd{x'} =
-	\begin{cases}
-		\frac{u_0}{2p} \exp(\sqrt{\frac{p}{\kappa} x}), &x < 0, \\
-		\frac{u_0}{2p} \left[2 - \exp(-\sqrt{\frac{p}{\kappa}}x)\right], &x \geq 0,
-	\end{cases}
-\end{equation*}
-所以
-\begin{equation*}
-	u(x, t) = 
-	\begin{cases}
-		\frac{u_0}{2} \mathrm{erfc}\left(-\frac{x}{2\sqrt{\kappa t}}\right), &x < 0, \\
-		u_0 \left(1 - \frac{1}{2} \mathrm{erfc} \frac{x}{2\sqrt{\kappa t}}\right), &x \geq 0.
-	\end{cases}
+	G(\vb*{x}, t; \vb*{x}_0, t_0) = \frac{1}{2\pi a} \frac{1}{\sqrt{a^2 (t - t_0)^2 - \abs{\vb*{x} - \vb*{x}_0}^2}}.
 \end{equation*}
 
 \paragraph{5.}
-对时间变量作 Laplace 变换，定解问题化为
+我们可以直接利用 Fourier 变换方法求解三维无界空间热传导方程
 \begin{align*}
-	&p^2 U(x, p) - a^2 \dv[2]{U(x, p)}{x} = \frac{p}{p^2 + \omega^2}, \quad 0 < x < \infty \\
-	&U(0, p) = 0, \quad \eval{\dv{U}{x}(x, p)}_{x \to \infty} = 0
+	&\pdv{u}{t} - \kappa \laplacian{u} = 0\\
+	&u(\vb*{x}, 0) = f(\vb*{x})
 \end{align*}
-结合边界条件得到其解为
+令
 \begin{equation*}
-	U(x, p) = \frac{1}{p} \frac{1}{p^2 + \omega^2} \left(1 - \mathrm{e}^{-px/a}\right),
+	U(\vb*{K}, t) = \frac{1}{(2\pi)^{3/2}} \iiint u(\vb*{x}, t) \mathrm{e}^{-\mathrm{i} \vb*{K} \cdot \vb*{x}} \dd[3]{\vb*{x}},
 \end{equation*}
-逆变换得到原定解问题的解为
+则上述方程化为
+\begin{align*}
+	&\pdv{U}{t} + \kappa K^2 U = 0 \\
+	&U(\vb*{K}, 0) = F(\vb*{K})
+\end{align*}
+其中 $F(\vb*{K})$ 是 $f(\vb*{x})$ 的 Fourier 像函数.
+不难求解得到 $U(\vb*{K}, t) = F(\vb*{K}) \mathrm{e}^{-\kappa K^2 t}$, 作 Fourier 反变换得到原初值问题的解为
 \begin{equation*}
-	u(x, t) = \frac{1}{\omega^2} (1 - \cos \omega t) - \frac{1}{\omega^2} \left[1 - \cos \omega \left(t - \frac{x}{a}\right)\right] H\left(t - \frac{x}{a}\right).
+	u(\vb*{x}, t) = \frac{1}{(2\pi)^{3/2}} \iiint F(\vb*{K}) \mathrm{e}^{-\kappa K^2 t} \mathrm{e}^{\mathrm{i} \vb*{K} \cdot \vb*{x}} \dd[3]{\vb*{K}} = \iiint f(\vb*{x}_0) \frac{1}{(4\pi \kappa t)^{3/2}} \mathrm{e}^{-\abs{\vb*{x} - \vb*{x}_0}^2/4\kappa t} \dd[3]{\vb*{x}_0}.
+\end{equation*}
+若使用格林函数求解，应当有
+\begin{equation*}
+	u(\vb*{x}, t) = \iiint G(\vb*{x}, t; \vb*{x}_0, 0) f(\vb*{x}_0) \dd[3]{\vb*{x}_0},
+\end{equation*}
+类比以上两式，我们可以得到格林函数的表达式
+\begin{equation*}
+	G(\vb*{x}, t; \vb*{x}_0, t_0) = \left[\frac{1}{4\pi \kappa (t - t_0)}\right]^{3/2} \mathrm{e}^{-\abs{\vb*{x} - \vb*{x}_0}^2/4\kappa (t - t_0)}.
 \end{equation*}
 
 \paragraph{6.}
-首先求解定解问题
+上题中我们已经得到了三维无界空间热传导方程的格林函数表达式，那么对于本题可以直接代入表达式得到
 \begin{align*}
-	&\frac{1}{\rho} \pdv{\rho}(\rho \pdv{u}{\rho}) + \pdv[2]{u}{z} = 0, \quad 0 < \rho < a, -\infty < z < \infty \\
-	&\eval{u}_{\rho = a} = V_0 \mathrm{e}^{-\kappa \abs{z}} \mathrm{sgn} z, \quad -\infty < z < \infty
+	u(x, y, z, t) &= \int_{0}^{t} \iiint G(\vb*{x}, t; \vb*{x}_0, t_0) f(x_0, y_0, z_0, t_0) \dd[3]{\vb*{x}_0} \dd{t_0} + \iiint G(\vb*{x}, t; \vb*{x}_0, 0) u(\vb*{x}_0, 0) \dd[3]{\vb*{x}_0} \\
+	&= \begin{aligned}[t]
+		&\int_{0}^{t} \iiint f(\vb*{x}_0, t_0) \left[\frac{1}{4\pi \kappa (t - t_0)}\right]^{3/2} \mathrm{e}^{-\abs{\vb*{x} - \vb*{x}_0}^2/4\kappa (t - t_0)} \dd[3]{\vb*{x}_0} \dd{t_0} \\
+		&+ \frac{1}{(4\pi \kappa t)^{3/2}} \iiint \phi(\vb*{x}_0) \mathrm{e}^{-\abs{\vb*{x} - \vb*{x}_0}^2/4\kappa t} \dd[3]{\vb*{x}_0}.
+	\end{aligned}
 \end{align*}
-对 $z$ 作 Fourier 变换得到关于 $U(\rho, k)$ 的定解问题
-\begin{align*}
-	&\frac{1}{\rho} \dv{\rho} \left[\rho \dv{U(\rho, k)}{\rho}\right] - k^2 U(\rho, k) = 0, \quad 0 < \rho < a \\
-	&U(a, k) = -\frac{V_0}{\sqrt{2\pi}} \frac{2 \mathrm{i} k}{\kappa^2 + k^2}
-\end{align*}
-上述方程为 0 阶虚宗量 Bessel 方程，结合边界条件得到其解为
+
+\paragraph{7.}
+直接代入 Euler-Lagrange 方程
 \begin{equation*}
-	U(\rho, k) = -\frac{V_0}{\sqrt{2\pi}} \frac{2 \mathrm{i} k}{\kappa^2 + k^2} \frac{\mathrm{I}_0(k\rho)}{\mathrm{I}_0(ka)},
+	\pdv{F}{u} - \div(\pdv{F}{(\grad{u})}) = 0, \quad F(u, \grad{u}) = (\grad{u})^2 - k^2 u^2
 \end{equation*}
-逆变换并取 $\kappa \to 0$ 得到原定解问题解为
+得到泛函极值满足
 \begin{equation*}
-	u(\rho, z) = \frac{2V_0}{\pi} \int_{0}^{\infty} \frac{\mathrm{I}_0(k\rho)}{\mathrm{I}_0(ka)} \frac{\sin kz}{k} \dd{k}.
+	\laplacian{u} + k^2 u = 0,
+\end{equation*}
+以及边界条件
+\begin{equation*}
+	\eval{u}_{r = a} = a\cos \theta.
+\end{equation*}
+不难求解上述边值问题.
+根据对称性选取取球坐标系，设 $u(r, \theta) = R(r) \cos \theta$, 分离变量得到 $R(r)$ 满足 1 阶球 Bessel 方程
+\begin{equation*}
+	\frac{1}{r^2} \dv{r}\left[r^2 \dv{R(r)}{r}\right] + \left(k^2 - \frac{2}{r^2}\right) R(r) = 0
+\end{equation*}
+并要求在原点处有限，故解为 1 阶球 Bessel 函数
+\begin{equation*}
+	R(r) = A\mathrm{j}_1(kr).
+\end{equation*}
+代入边界条件得到 $A = a / \mathrm{j}_1(ka)$, 故极值函数为
+\begin{equation*}
+	u(r, \theta) = a\frac{\mathrm{j}_1(kr)}{\mathrm{j}_1(ka)} \cos \theta,
+\end{equation*}
+带回直角坐标中
+\begin{equation*}
+	u(x, y, z) = \frac{a^3 z}{(x^2 + y^2 + z^2)^{3/2}} \frac{\sin \sqrt{x^2 + y^2 + z^2} - k\sqrt{x^2 + y^2 + z^2} \cos\sqrt{x^2 + y^2 + z^2}}{\sin ka - ka \cos ka}.
 \end{equation*}
 
+\paragraph{8.}
+将题述常微分方程写为 Sturm-Liouville 形式
+\begin{equation*}
+	\dv{x}\left[\mathrm{e}^{-x^2} \dv{y(x)}{x}\right] + 2n \mathrm{e}^{-x^2} y(x) = 0,
+\end{equation*}
+这个方程应当来自
+\begin{equation*}
+	\int_{0}^{1} \left\{\dv{x}\left[\mathrm{e}^{-x^2} \dv{y(x)}{x}\right] + 2n \mathrm{e}^{-x^2} y(x)\right\} \var{y(x)} \dd{x} = 0,
+\end{equation*}
+可以将左端化为泛函变分形式
+\begin{equation*}
+	\var{J[y]} = \var{\int_0^1 \mathrm{e}^{-x^2} \left[\left(\dv{y}{x}\right)^2 - 2n y^2(x)\right] \dd{x}} = 0,
+\end{equation*}
+即题述定解问题为泛函 $J[y]$ 在相应边界条件下的极值问题.
+
+\paragraph{9.}
+采用 Lagrange 乘子法，泛函取极值的必要条件为
+\begin{equation*}
+	\left(\pdv{y} - \dv{x} \pdv{y'}\right) [(xy')^2 + 2y^2 - \lambda x^2 y^2] = 0 \quad \Rightarrow \quad \frac{1}{x^2} \dv{x} \left[x^2 \dv{y(x)}{x}\right] + \left(\lambda - \frac{2}{x^2}\right) y(x) = 0.
+\end{equation*}
+我们得到了一个 1 阶球 Bessel 方程，此方程与边界条件
+\begin{equation*}
+	y(0) < \infty, \quad y(1) = 0
+\end{equation*}
+构成一个本征值问题，其本征值为
+\begin{equation*}
+	\lambda_i = \mu_i^2, \quad \mu_i \text{是一阶球 Bessel 函数的第 i 个零点，满足} \mu_i = \tan \mu_i
+\end{equation*}
+即为相应的本征值，极值函数为相应的本征函数，系数由约束条件决定
+\begin{equation*}
+	C_i^2 \int_{0}^{1} x^2 \mathrm{j}^2_1(\mu_i x) \dd{x} = C_i^2 \frac{2\mu_i - \sin 2\mu_i}{4\mu_i^3} = 1 \quad \Rightarrow \quad C_i = \frac{\sqrt{2}}{\cos \mu_i}.
+\end{equation*}
+计算泛函极值，利用 Euler-Lagrange 方程并带入边界条件得到
+\begin{equation*}
+	J_m[y_i] = \int_{0}^{1} (x^2 y'^2 + 2y^2) \dd{x} = \lambda \int_{0}^{1} x^2 y^2 \dd{x} = \lambda = \mu_i^2.
+\end{equation*}
+故泛函最小值为 1 阶球 Bessel 函数最小正根的平方，$J_m \approx 20.19$.
+
+\paragraph{10.}
+一般可以取能量泛函，即
+\begin{equation*}
+	J[S] = \braket{S}{\hat{L}^2 S} = \int_{0}^{2\pi} \dd{\phi} \int_{0}^{\pi} \sin \theta \dd{\theta} S(\theta, \phi) [\hat{L}^2 S(\theta, \phi)],
+\end{equation*}
+利用边界条件分部积分，可以将泛函简化为
+\begin{equation*}
+	J[S] = \int_{0}^{2\pi} \dd{\phi} \int_{0}^{\pi} \sin \theta \dd{\theta} \left[\left(\pdv{S}{\theta}\right)^2 + \frac{1}{\sin^2 \theta} \left(\pdv{S}{\phi}\right)^2\right]
+\end{equation*}
+本征值为拉格朗日乘子，即泛函满足约束条件
+\begin{equation*}
+	\int_{0}^{2\pi} \dd{\phi} \int_{0}^{\pi} \sin \theta \dd{\theta} S^2(\theta, \phi) = 1,
+\end{equation*}
+且 $S(\theta, \phi)$ 满足 $D\left(\hat{L}^2\right)$ 内的边界条件，共同构成相应的泛函极值问题.
 
 \end{document}
